@@ -27,7 +27,7 @@
     display: flex;
     margin-bottom: 10px;
 }
-.m-aside-menu .m-menu__nav .m-menu__item > .m-menu__link .m-menu__link-text {
+.m-aside-menu .m-menu__nav .m-menu__item > .m-menu__link .m-menu__link-text, .m-aside-menu .m-menu__nav .m-menu__item > .m-menu__link .m-menu__link-title {
     width: auto;
     text-align: center;
     line-height: 17px;
@@ -107,4 +107,68 @@
     display:  flex;
     justify-content:  center;
     align-items:  center;
+}
+
+
+.customField {
+    width: 695px;
+    height: 55px;
+    border: 1px dashed rgba(1,194,253,0.4);
+    border-radius:  4px;
+    background-color:  #edf3ff;
+}
+
+.customField .formControl {
+    border: 0;
+    background: transparent;
+    width:  100%;
+    height:  100%;
+    text-align:  center;
+    text-transform:  uppercase;
+}
+
+.dragged-item .dragElement {
+    position:  absolute;
+    top: -12px;
+    width:  33px;
+    height: 24px;
+    background-color:  #fff;
+    border:  1px dashed rgba(1,194,253,0.4);
+    text-align:  center;
+    line-height:  24px;
+    font-size: 13px;
+    color:  rgba(1,194,253,0.4);
+    left: 50%;
+    transform:  translateX(-50%);
+    cursor: move;
+}
+
+.dragged-item {
+    position:  relative;
+}
+
+.formControlrs>button {
+    background-color: #96d8ff;
+    border:  0;
+    color:  #fff;
+    width: 28px;
+    height: 28px;
+    border-radius:  50%;
+    text-align:  center;
+    line-height:  28px;
+    transition:  all 0.2s ease-in;
+    cursor:  pointer;
+}
+
+.formControlrs {
+    text-align:  center;
+    position:  relative;
+    top: -14px;
+}
+
+.formControlrs>button:hover {
+    background-color: #01c2fd;
+}
+.droppable.highlight {
+    border: dashed 1px #01c2fd;
 }
