@@ -45,13 +45,25 @@
 </div>
 
 <div class="m-content">
-	<div class="draggable-directive">
-		<div class="m-portlet m-portlet--mobile flex-items">
+	<div class="draggable-directive" dropDirective (dropEvent)="addDropItem($event)" class="droppable" [dropHighlight]="'highlight'">
+		<div class="m-portlet m-portlet--mobile m-editable-area flex-items">
 			<div class="m-portlet__body">
 				<!--begin: Datatable -->
-					<div class="drag-here-component droppable">
+					<div class="drag-here-component droppable"  >
 						<i class="m-menu__link-icon la la-object-ungroup"></i>
 						<h4>Drag Your Components Here</h4>
+					</div>
+					<div class="dragged-item {{item.itemclass}}" *ngFor="let item of itemsDropped">
+						<div class="editArea">
+							<div class="customField">
+								<input type="text" class="formControl" placeholder="Click here to edit" />
+								<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>
+								<div class="formControlrs">
+									<button class="menuBtn"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+									<button class="editBtn"><i class="fa fa-times" aria-hidden="true"></i></button>
+								</div>
+							</div>
+						</div>
 					</div>
 				<!--end: Datatable -->
 			</div>

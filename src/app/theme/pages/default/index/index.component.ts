@@ -9,18 +9,26 @@ import { ScriptLoaderService } from '../../../../_services/script-loader.service
     encapsulation: ViewEncapsulation.None,
 })
 export class IndexComponent implements OnInit, AfterViewInit {
-
-
+	
+	private itemsDropped:Array<any> = [];
     constructor(private _script: ScriptLoaderService) {
 
     }
     ngOnInit() {
-
+		//debugger;
     }
     ngAfterViewInit() {
         this._script.loadScripts('app-index',
             ['assets/app/js/dashboard.js']);
 
     }
-
+	private addDropItem(event){
+		debugger;
+		//classname=event.itemclass;
+		this.itemsDropped.push(event);
+		//debugger;
+		//angular.element('.dragged-item')
+		//var draggedItem = angular.element( document.querySelector( '.dragged-item' ) );
+		//myEl.addClass('alpha');
+  }
 }
