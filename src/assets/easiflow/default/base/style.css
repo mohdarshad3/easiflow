@@ -4,6 +4,8 @@
     justify-content: center;
     align-items: center;
     padding-top: 12px;
+    margin-bottom: 0;
+    padding-bottom: 15px;
 }
 .m-aside-menu .m-menu__nav > .m-menu__item > .m-menu__link {
     display: flex;
@@ -70,9 +72,12 @@
     font-size: 15px;
     color: #9cabc4;
     padding: 0 20px;
-    margin: 20px 0 0;
+    margin: 0;
     text-transform: uppercase;
     font-weight: normal;
+}
+.m-aside-menu:first-child>h4 {
+    margin-top: 20px;
 }
 .m-badge.m-badge--success {
     background-color: #01c2fd;
@@ -90,7 +95,11 @@
     padding: 20px 50px 0;
 }
 .drag-here-component {
-    text-align:  center;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 34px;
 }
 
 .drag-here-component>i {
@@ -104,28 +113,96 @@
 }
 
 .flex-items {
-    display:  flex;
-    justify-content:  center;
-    align-items:  center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    position: relative;
+    min-height: 180px;
 }
-
+.droppable.highlight>.m-portlet {
+    /* background-color: rgba(0,0,0,0.2); */
+    opacity: 0.4;
+}
 
 .customField {
     width: 695px;
-    height: 55px;
-    border: 1px dashed rgba(1,194,253,0.4);
-    border-radius:  4px;
-    background-color:  #edf3ff;
+    height: auto;
+    /* border: 1px dashed rgba(1,194,253,0.6); */
+    /* border-radius: 4px; */
+    /* background-color: #edf3ff; */
+    min-height: 55px;
+}
+.img-element {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding-bottom: 15px;
 }
 
-.customField .formControl {
-    border: 0;
-    background: transparent;
+.img-element>span {
+    word-break: break-word;
+    padding: 0px 10px;
+    margin: 0px;
+    /* font-weight: 600; */
+    font-variant: initial;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #C3C5C8;
+}
+.img-element input.hiddenField {
     width:  100%;
     height:  100%;
-    text-align:  center;
-    text-transform:  uppercase;
+    position:  absolute;
+    opacity:  0;
 }
+
+.img-element>.custom-upload {
+    width:  180px;
+    /* height: 288px; */
+    position:  relative;
+}
+
+.element-box-contents {
+    border: 1px dashed rgba(1,194,253,0.6);
+    border-radius: 4px;
+    background-color: #edf3ff;
+    text-align: center;
+    padding: 12px;
+    opacity: 0.4;
+    margin-top: 15px;
+}
+.element-box-contents:hover {
+    opacity: 1;
+    outline: 0;
+}
+.element-box-contents>h1, .element-box-contents>label, .element-box-contents>p, .element-box-contents>a {
+    font-size: 18px;
+    margin: 0;
+	text-decoration:none;
+	font-weight:normal;
+}
+
+.customField input {
+    background: transparent;
+    /* width: 100%; */
+    /* height: 100%; */
+    text-align: center;
+    text-transform: uppercase;
+    transition: opacity 0.1s ease-in;
+    border: 0;
+    background: transparent;
+}
+.customField input[type="text"] {
+    width: 100%;
+    height: 100%;
+}
+.customField input[type="checkbox"] {
+    position:  relative;
+    top: 1px;
+}
+
 
 .dragged-item .dragElement {
     position:  absolute;
@@ -171,4 +248,65 @@
 }
 .droppable.highlight {
     border: dashed 1px #01c2fd;
+}
+.elementStyles>ul {
+    list-style:  none;
+    display:  flex;
+    padding:  0;
+    justify-content: center;
+}
+.elementStyles {
+    position: absolute;
+    margin-top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.elementStyles>ul>li>button:hover {
+    background-color: #212833;
+}
+.elementStyles>ul>li>button {
+    background-color: #293140;
+    color: #fff;
+    padding: 8px 12px;
+    display: block;
+    line-height: 0;
+    border: 0;
+    float: left;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+.elementStyles>ul>li {
+    border-right:  1px solid;
+}
+.confirmElementDelete {
+    background-color:  #333c4e;
+    width: 140px;
+    display:  flex;
+    justify-content:  center;
+    align-items:  center;
+    padding: 18px;
+    border-radius:  2px;
+    flex-direction: column;
+    color:  #fff;
+    margin: 10px auto;
+    position:  absolute;
+    left:  0;
+    right:  0;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.10) !important;
+    -moz-box-shadow: 0px 5px 10px 2px rgba(0, 197, 220, 0.19) !important;
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.10) !important;
+}
+
+.confirmElementDelete>button {
+    margin-top: 10px;
+}
+
+.btn.deleteBtn {
+    background-color: #ff4d4d;
+    color:  #fff;
+}
+.formControlrs>button:focus {
+    outline: 0;
+    background-color: #01c2fd;
 }
