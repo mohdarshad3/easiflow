@@ -44,23 +44,94 @@
 	</div>
 </div>
 
-<div class="m-content">
-	<div class="draggable-directive" dropDirective (dropEvent)="addDropItem($event)" class="droppable" [dropHighlight]="'highlight'">
+<div class="m-content" (click)=hideCustomEditDiv($event); false>
+	<div class="draggable-directive" dropDirective (dropEvent)="addDropItem($event)" class="droppable" [dropHighlight]="'highlight'" (click)="hideField($event)">
 		<div class="m-portlet m-portlet--mobile m-editable-area flex-items">
 			<div class="m-portlet__body">
 				<!--begin: Datatable -->
-					<div class="drag-here-component droppable"  >
+					<div class="drag-here-component droppable" *ngIf="showSelected">
 						<i class="m-menu__link-icon la la-object-ungroup"></i>
 						<h4>Drag Your Components Here</h4>
 					</div>
-					<div class="dragged-item {{item.itemclass}}" *ngFor="let item of itemsDropped">
-						<div class="editArea">
+					<div class="dragged-item {{item.itemclass}}" *ngFor="let item of itemsDropped" [ngClass]="{'transition':show}" [@enterAnimation]>
+						<div class="editArea" (click)=showCustomEditDiv(item,$event); false>
 							<div class="customField">
-								<input type="text" class="formControl" placeholder="Click here to edit" />
-								<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>
-								<div class="formControlrs">
-									<button class="menuBtn"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
-									<button class="editBtn"><i class="fa fa-times" aria-hidden="true"></i></button>
+								
+								
+								<!-- <div class="toggleElelement element-box-contents" *ngIf="item.content == 'checkbox'">
+									<div class="checkbox">
+										<label>
+										  <input type="checkbox" placeholder="Click here to edit checkbox"> Check me out
+										</label>
+									</div>
+								</div> -->
+								<div class="toggleElelement element-box-contents" *ngIf="item.content == 'titlecontrol'">
+									<title-control></title-control>
+								</div>
+								<div class="toggleElelement element-box-contents" *ngIf="item.content == 'labelcontrol'">
+									<label-control></label-control>
+								</div>
+								<div class="toggleElelement element-box-contents" *ngIf="item.content == 'inputcontrol'">
+									<input-control></input-control>
+								</div>
+								<div class="toggleElelement element-box-contents" *ngIf="item.content == 'checkboxcontrol'">
+									<checkbox-control></checkbox-control>
+								</div>
+								<div class="toggleElelement element-box-contents" *ngIf="item.content == 'imageuploader'">
+									<image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'"></image-uploader>
+								</div>
+								
+								
+								<!-- <div [innerHTML]="item.content" class="toggleElelement element-box-contents" *ngIf="item.content != 'input' && item.content != 'checkbox' && item.content != 'img' && removeItemClass"></div> -->
+								
+								<!-- <input type="text" class="formControl" placeholder="Click here to edit" /> -->
+								<div class="elementOptions" *ngIf="item.showCustomDiv">
+									<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>
+									<div class="formControlrs">
+										<button class="menuBtn" (click)=toggleEmentStyle(item)><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+										<button class="editBtn" (click)="removeDailog(item)"><i class="fa fa-times" aria-hidden="true"></i></button>
+										<div class="confirmElementDelete" *ngIf="item.showelEmentDelete" [ngClass]="{'transition':show}" [@enterAnimation]>
+											Are you sure?
+											<button class="btn deleteBtn" (click)="removeItem(item)">Delete</button>
+										</div>
+										<div class="elementStyles text-styling" *ngIf="item.showelEmentStyle" [ngClass]="{'transition':show}" [@enterAnimation]>
+											<ul>
+												<li>
+													<button>
+														<i class="fa fa-bold"></i>
+													</button>
+												</li>
+												<li>
+													<button>
+														<i class="fa fa-italic"></i>
+													</button>
+												</li>
+												<li>
+													<button>
+														<i class="fa fa-underline"></i>
+													</button>
+												</li>
+												<li>
+													<button>
+														<i class="fa fa-font"></i>
+													</button>
+												</li>
+												<li>
+													<button>
+														<i class="fa fa-plus"></i>
+													</button>
+													<button>
+														<i class="fa fa-minus"></i>
+													</button>
+												</li>
+												<li>
+													<button class="caretIcon">
+														<i class="fa fa-align-left"></i>
+													</button>
+												</li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
