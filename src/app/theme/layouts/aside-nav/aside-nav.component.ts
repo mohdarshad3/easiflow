@@ -1,102 +1,112 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Helpers } from '../../../helpers';
 
+
 declare let mLayout: any;
 @Component({
     selector: "app-aside-nav",
     templateUrl: "./aside-nav.component.html",
-	//template: `
-   // navigation works!
-   // <div *ngFor="let item of itemsToDrop" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" class="dragItem" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)">
-  //  </div>
-  //`,
-  styleUrls: ['./navigation-type-check.component.css'],
     encapsulation: ViewEncapsulation.None,
 })
 export class AsideNavComponent implements OnInit, AfterViewInit {
+
 	dropItemType:any;
 	private itemsToDrop:Array<Object> = [
 		{
 			name: 'Title',
 			iconClass:'m-menu__link-icon flaticon-type',
-			content: 'description 1',
+			content: 'titlecontrol',
 			itemclass: 'item-title'
 		},
 		{
 			name: 'Label',
 			iconClass:'m-menu__link-icon fa fa-tag',
-			content: 'description 2',
+			content: 'labelcontrol',
 			itemclass: 'item-label'
 		},
 		{
 			name: 'Input',
 			iconClass:'m-menu__link-icon flaticon-login',
-			content: 'description 2'
+			content: 'inputcontrol',
+			itemclass: 'item-input'
 		},
 		{
 			name: 'Checkbox',
 			iconClass:'m-menu__link-icon flaticon-check-box-with-check-sign',
-			content: 'description 2'
+			content: 'checkboxcontrol',
+			itemclass: 'item-checkbox'
 		},
 		{
 			name: 'Datetime Compare',
 			iconClass:'m-menu__link-icon fa fa-compress',
-			content: 'description 2'
+			content: '<input type="text" class="form-control" placeholder="Click here to compare datetime" />',
+			itemclass: 'item-datetimeCompare'
 		},
 		{
 			name: 'Datetime Picker',
 			iconClass:'m-menu__link-icon flaticon-calendar-with-a-clock-time-tools',
-			content: 'description 2'
+			content: '<input type="text" class="form-control" placeholder="Click here to Pick datetime" />',
+			itemclass: 'item-datetimePicker'
 		},
 		{
 			name: 'Button',
 			iconClass:'m-menu__link-icon flaticon-round-toggle',
-			content: 'description 2'
+			content: '<button class="btn default-btn">Click here to edit button</button>',
+			itemclass: 'item-button'
 		},
 		{
 			name: 'Drop Down',
 			iconClass:'m-menu__link-icon flaticon-drop',
-			content: 'description 2'
+			content: '<select><option></option></select>',
+			itemclass: 'item-dropDown'
 		},
 		{
 			name: 'Text Editor',
 			iconClass:'m-menu__link-icon flaticon-signs',
-			content: 'description 2'
+			content: '<input type="text" class="form-control" placeholder="Click here to edit text" />',
+			itemclass: 'item-textEditor'
 		},
 		{
 			name: 'Modal Popup',
 			iconClass:'m-menu__link-icon flaticon-form',
-			content: 'description 2'
+			content: '<div class="modal">Click here to edit Modal</div>',
+			itemclass: 'item-modalPopup'
 		},
 		{
 			name: 'Radio Button',
 			iconClass:'m-menu__link-icon fa fa-dot-circle-o',
-			content: 'description 2'
+			content: '<input type="radio" class="form-control default-radio" />',
+			itemclass: 'item-radioButton'
 		},
 		{
 			name: 'Image Control',
 			iconClass:'m-menu__link-icon fa fa-picture-o',
-			content: 'description 2'
+			content: 'imageuploader',
+			itemclass: 'item-imageControl'
 		},
 		{
 			name: 'Form',
 			iconClass:'m-menu__link-icon fa fa-wpforms',
-			content: 'description 2'
+			content: '<form></form>',
+			itemclass: 'item-form'
 		},
 		{
 			name: 'Paragraph',
 			iconClass:'m-menu__link-icon flaticon-paragraph',
-			content: 'description 2'
+			content: '<p>Click here to edit paragraph</p>',
+			itemclass: 'item-paragraph'
 		},
 		{
 			name: 'Anchor link',
 			iconClass:'m-menu__link-icon flaticon-link',
-			content: 'description 2'
+			content: '<a href="javascript:">Click here to edit anchor link</a>',
+			itemclass: 'item-anchorLink'
 		},
 		{
 			name: 'Tabs',
 			iconClass:'m-menu__link-icon flaticon-new-tab',
-			content: 'description 2'
+			content: '',
+			itemclass: 'item-anchorLink'
 		},
 		
 	]
