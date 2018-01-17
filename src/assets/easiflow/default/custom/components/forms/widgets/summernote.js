@@ -1,6 +1,7 @@
 //== Class definition
 
-var SummernoteDemo = function () {    
+var SummernoteDemo = function () { 
+debugger;   
     //== Private functions
     var demos = function () {
         $('.summernote').summernote({

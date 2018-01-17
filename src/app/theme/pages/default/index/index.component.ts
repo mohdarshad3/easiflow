@@ -27,6 +27,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class IndexComponent implements OnInit, AfterViewInit {
 	showSelected : boolean;
+	showdataproperty:boolean;
 	removeItemClass : boolean;
 	event: MouseEvent;
     clientX = 0;
@@ -38,6 +39,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     ngOnInit() {
 		this.showSelected=(this.itemsDropped.length)>0?false:true;
 		this.removeItemClass=true;
+		this.showdataproperty = false;
     }
     ngAfterViewInit() {
         this._script.loadScripts('app-index',

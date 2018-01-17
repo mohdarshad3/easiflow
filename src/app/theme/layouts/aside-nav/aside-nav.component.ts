@@ -39,43 +39,43 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
 		{
 			name: 'Datetime Compare',
 			iconClass:'m-menu__link-icon fa fa-compress',
-			content: '<input type="text" class="form-control" placeholder="Click here to compare datetime" />',
+			content: 'dtccontrol',
 			itemclass: 'item-datetimeCompare'
 		},
 		{
 			name: 'Datetime Picker',
 			iconClass:'m-menu__link-icon flaticon-calendar-with-a-clock-time-tools',
-			content: '<input type="text" class="form-control" placeholder="Click here to Pick datetime" />',
+			content: 'dtpcontrol',
 			itemclass: 'item-datetimePicker'
 		},
 		{
 			name: 'Button',
 			iconClass:'m-menu__link-icon flaticon-round-toggle',
-			content: '<button class="btn default-btn">Click here to edit button</button>',
+			content: 'buttoncontrol',
 			itemclass: 'item-button'
 		},
 		{
 			name: 'Drop Down',
 			iconClass:'m-menu__link-icon flaticon-drop',
-			content: '<select><option></option></select>',
+			content: 'dropdowncontrol',
 			itemclass: 'item-dropDown'
 		},
 		{
 			name: 'Text Editor',
 			iconClass:'m-menu__link-icon flaticon-signs',
-			content: '<input type="text" class="form-control" placeholder="Click here to edit text" />',
+			content: 'tditorcontrol',
 			itemclass: 'item-textEditor'
 		},
 		{
 			name: 'Modal Popup',
 			iconClass:'m-menu__link-icon flaticon-form',
-			content: '<div class="modal">Click here to edit Modal</div>',
+			content: 'modalcontrol',
 			itemclass: 'item-modalPopup'
 		},
 		{
 			name: 'Radio Button',
 			iconClass:'m-menu__link-icon fa fa-dot-circle-o',
-			content: '<input type="radio" class="form-control default-radio" />',
+			content: 'radiocontrol',
 			itemclass: 'item-radioButton'
 		},
 		{
@@ -87,25 +87,25 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
 		{
 			name: 'Form',
 			iconClass:'m-menu__link-icon fa fa-wpforms',
-			content: '<form></form>',
+			content: 'formcontrol',
 			itemclass: 'item-form'
 		},
 		{
 			name: 'Paragraph',
 			iconClass:'m-menu__link-icon flaticon-paragraph',
-			content: '<p>Click here to edit paragraph</p>',
+			content: 'paragraphcontrol',
 			itemclass: 'item-paragraph'
 		},
 		{
 			name: 'Anchor link',
 			iconClass:'m-menu__link-icon flaticon-link',
-			content: '<a href="javascript:">Click here to edit anchor link</a>',
+			content: 'anchorcontrol',
 			itemclass: 'item-anchorLink'
 		},
 		{
 			name: 'Tabs',
 			iconClass:'m-menu__link-icon flaticon-new-tab',
-			content: '',
+			content: 'tabscontrol',
 			itemclass: 'item-anchorLink'
 		},
 		
