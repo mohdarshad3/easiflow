@@ -108,25 +108,25 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
             itemclass: 'item-anchorLink'
         }
 
-    ],
+    ];
     private itemsStractureToDrop: Array<Object> = [
         {
             name: 'Section',
             iconClass: 'm-menu__link-icon flaticon-layout',
             content: '',
-            itemclass: 'item-grid'
+            itemclass: 'item-section'
         },
         {
             name: 'Divider',
             iconClass: 'm-menu__link-icon fa fa-th-large',
-            content: '',
-            itemclass: 'item-grid'
+            content: 'dividercontrol',
+            itemclass: 'item-divider'
         },
         {
             name: 'Spacer',
             iconClass: 'm-menu__link-icon fa fa-adjust',
             content: '',
-            itemclass: 'item-grid'
+            itemclass: 'item-spacer'
         },
         {
             name: 'Grid',
@@ -149,6 +149,6 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         console.log('Begining to drag item: ' + item);
     }
     private releaseDrop(event) {
-        
+
     }
 }

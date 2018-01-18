@@ -2,13 +2,10 @@ import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/co
 import { Helpers } from '../../../../helpers';
 import { ScriptLoaderService } from '../../../../_services/script-loader.service';
 import { trigger, style, animate, transition } from '@angular/animations';
-//import {FileUploaderComponent} from '../app-tools/file-uploader/file-uploader.component';
-
 
 @Component({
     selector: "app-index",
     templateUrl: "./index.component.html",
-	//directives: [FileUploaderComponent],
     encapsulation: ViewEncapsulation.None,
 	animations: [
 		trigger(
@@ -29,6 +26,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 	showSelected : boolean;
 	showdataproperty:boolean;
 	removeItemClass : boolean;
+	showelEmentStyle:false;
 	event: MouseEvent;
     clientX = 0;
     clientY = 0;
@@ -46,8 +44,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
             ['assets/app/js/dashboard.js']);
     }
     private addDropItem(event,obj) {
-		//debugger;
+		event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
 		if(event.renderid==undefined){
+			this.itemsDropped.forEach(function(item) {
+				item.showCustomDiv=false;
+			});
+			event.showBasicControl=(event.content!='dividercontrol' && event.content!='gridcontrol')?true:false;
 			event.showCustomDiv=true;
 			event.renderid=(this.itemsDropped.length+1);
 			this.itemsDropped.push(event);
@@ -60,21 +62,15 @@ export class IndexComponent implements OnInit, AfterViewInit {
 			let getrenid=event.renderid;
 			let a = this.itemsDropped.find(event => event.renderid === getrenid);
 			if(a.renderid==getrenid){
-				//let findrenderid=(getrenid-1);
-				//style='top:'+ obj.clientY+'px;left:'+obj.clientX+'px;position:fixed';
-				//$('div.dragged-item:eq('+findrenderid+')').attr('style',style);
 			}
 		}
     }
 	private removeDailog(item){
-		
+		item.showelEmentStyle=false;
 		item.showelEmentDelete=(!item.showelEmentDelete)?true:false;
-		
 	}
 	private removeItem(item){
-		
 		item.showelEmentDelete=(!item.showelEmentDelete)?true:false;
-		
 		let getrenid=item.renderid;
 		let a = this.itemsDropped.find(item => item.renderid === getrenid);
 		if(a.renderid==getrenid){
@@ -82,12 +78,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
 			this.showSelected=(this.itemsDropped.length)>0?false:true;
 		}
 	}
-	
 	private hideRemoveItem(item){
-		
 		item.showelEmentDelete=false;
 	}
-	
 	private hideCustomEditDiv(item) {
 		this.itemsDropped.forEach(function(item) {
 			item.showCustomDiv=false;
@@ -103,27 +96,17 @@ export class IndexComponent implements OnInit, AfterViewInit {
 	}
 	
 	private toggleEmentStyle(item) {
-		// show btn with id btnId in DOM
-		//debugger;
-		item.showelEmentStyle=(!item.showelEmentStyle)?true:false;
-		
+		item.showelEmentDelete=false;
+		if(item.content=='inputcontrol')
+			item.showelEmentStyle=(!item.showelEmentStyle)?true:false;
+		else
+			item.showelEmentStyle=false;
 	}
 	
 	private startDrag(item) {
         console.log('Begining to drag item: ' + item);
     }
     private releaseDrop(event: MouseEvent) {
-		//debugger;
-		//this.clientX = event.clientX;
-       // this.clientY = event.clientY;
-		//console.log('x='+this.clientX+'y='+this.clientY);
-    }
-	onEvent(event: MouseEvent): void {
-        this.event = event;
-    }
-    coordinates(event: MouseEvent): void {
-        this.clientX = event.clientX;
-        this.clientY = event.clientY;
-		//console.log('x='+this.clientX+'y='+this.clientY);
+		console.log('Release to drag item:');
     }
 }

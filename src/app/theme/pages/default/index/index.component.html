@@ -43,7 +43,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="m-content" (click)=hideCustomEditDiv($event); false>
 	<div class="draggable-directive" dropDirective (dropEvent)="addDropItem($event)" class="droppable" [dropHighlight]="'highlight'">
 		<div class="m-portlet m-portlet--mobile m-editable-area flex-items">
@@ -53,81 +52,36 @@
 						<div class="drag-here-component droppable" *ngIf="showSelected">
 							<i class="m-menu__link-icon la la-object-ungroup"></i>
 							<h4>Drag Your Components Here</h4>
-							
 						</div>
 						<div class="dragged-item {{item.itemclass}}" *ngFor="let item of itemsDropped" [ngClass]="{'transition':show}" [@enterAnimation]>
 							<div class="editArea" (click)=showCustomEditDiv(item,$event); false>
 								<div class="customField" >
-									
-									
-									<!-- <div class="toggleElelement element-box-contents" *ngIf="item.content == 'checkbox'">
-										<div class="checkbox">
-											<label>
-											  <input type="checkbox" placeholder="Click here to edit checkbox"> Check me out
-											</label>
-										</div>
-									</div> -->
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'titlecontrol'">
-										<title-control></title-control>
+									<!-- Basic control-->
+									<div class="toggleElelement element-box-contents" *ngIf="item.showBasicControl">
+										<title-control *ngIf="item.content == 'titlecontrol'"></title-control>
+										<label-control *ngIf="item.content == 'labelcontrol'"></label-control>
+										<input-control *ngIf="item.content == 'inputcontrol'"></input-control>
+										<checkbox-control *ngIf="item.content == 'checkboxcontrol'"></checkbox-control>
+										<dtc-control *ngIf="item.content == 'dtccontrol'"></dtc-control>
+										<dtp-control *ngIf="item.content == 'dtpcontrol'"></dtp-control>
+										<button-control *ngIf="item.content == 'buttoncontrol'"></button-control>
+										<dropdown-control *ngIf="item.content == 'dropdowncontrol'"></dropdown-control>
+										<tditor-control *ngIf="item.content == 'tditorcontrol'"></tditor-control>
+										<modal-control *ngIf="item.content == 'modalcontrol'"></modal-control>
+										<radio-control *ngIf="item.content == 'radiocontrol'"></radio-control>
+										<image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'" *ngIf="item.content == 'imageuploader'"></image-uploader>
+										<form-control *ngIf="item.content == 'formcontrol'"></form-control>
+										<paragraph-control *ngIf="item.content == 'paragraphcontrol'"></paragraph-control>
+										<anchor-control *ngIf="item.content == 'anchorcontrol'"></anchor-control>
+										<tabs-control *ngIf="item.content == 'tabscontrol'"></tabs-control>
 									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'labelcontrol'">
-										<label-control></label-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'inputcontrol'">
-										<input-control></input-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'checkboxcontrol'">
-										<checkbox-control></checkbox-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'dtccontrol'">
-										<dtc-control></dtc-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'dtpcontrol'">
-										<dtp-control></dtp-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'buttoncontrol'">
-										<button-control></button-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'dropdowncontrol'">
-										<dropdown-control></dropdown-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'tditorcontrol'">
-										<tditor-control></tditor-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'modalcontrol'">
-										<modal-control></modal-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'radiocontrol'">
-										<radio-control></radio-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'imageuploader'">
-										<image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'"></image-uploader>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'formcontrol'">
-										<form-control></form-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'paragraphcontrol'">
-										<paragraph-control></paragraph-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'anchorcontrol'">
-										<anchor-control></anchor-control>
-									</div>
-									<div class="toggleElelement element-box-contents" *ngIf="item.content == 'tabscontrol'">
-										<tabs-control></tabs-control>
-									</div>
-									
-									<!-- Stracture tools -->
+									<!-- Stracture control -->
 									<div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'dividercontrol'">
 										<divider-control></divider-control>
-									</div>
-									<div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'gridcontrol'">
+									 </div>
+									 <div class="toggleElelement element-box-contents-for-divider" *ngIf="item.content == 'gridcontrol'">
 										<grid-control></grid-control>
-									</div>
-									
-									
-									<!-- <div [innerHTML]="item.content" class="toggleElelement element-box-contents" *ngIf="item.content != 'input' && item.content != 'checkbox' && item.content != 'img' && removeItemClass"></div> -->
-									
-									<!-- <input type="text" class="formControl" placeholder="Click here to edit" /> -->
+									 </div>
 									<div class="elementOptions" *ngIf="item.showCustomDiv">
 										<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>
 										<div class="formControlrs">
