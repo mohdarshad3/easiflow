@@ -5,6 +5,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     styleUrls: ['./dtp-control.component.css']
 })
 export class DTPControlComponent {
-   
-    
+
+
 }

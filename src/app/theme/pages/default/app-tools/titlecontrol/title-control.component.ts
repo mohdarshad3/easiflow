@@ -5,6 +5,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     styleUrls: ['./title-control.component.css']
 })
 export class TitleControlComponent {
-   
-    
+
+
 }

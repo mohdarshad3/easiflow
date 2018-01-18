@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./tditor-control.component.css']
 })
 export class TditorControlComponent {
-   
-    
+
+
 }
