@@ -9,9 +9,8 @@ declare let mLayout: any;
     encapsulation: ViewEncapsulation.None,
 })
 export class AsideNavComponent implements OnInit, AfterViewInit {
-
     dropItemType: any;
-    itemsToDrop: Array<Object> = [
+    private itemsControlToDrop: Array<Object> = [
         {
             name: 'Title',
             iconClass: 'm-menu__link-icon flaticon-type',
@@ -107,6 +106,33 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
             iconClass: 'm-menu__link-icon flaticon-new-tab',
             content: 'tabscontrol',
             itemclass: 'item-anchorLink'
+        }
+
+    ],
+    private itemsStractureToDrop: Array<Object> = [
+        {
+            name: 'Section',
+            iconClass: 'm-menu__link-icon flaticon-layout',
+            content: '',
+            itemclass: 'item-grid'
+        },
+        {
+            name: 'Divider',
+            iconClass: 'm-menu__link-icon fa fa-th-large',
+            content: '',
+            itemclass: 'item-grid'
+        },
+        {
+            name: 'Spacer',
+            iconClass: 'm-menu__link-icon fa fa-adjust',
+            content: '',
+            itemclass: 'item-grid'
+        },
+        {
+            name: 'Grid',
+            iconClass: 'm-menu__link-icon flaticon-grid',
+            content: 'gridcontrol',
+            itemclass: 'item-grid'
         },
 
     ]
@@ -119,13 +145,10 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         mLayout.initAside();
     }
-    startDrag(item) {
+    private startDrag(item) {
         console.log('Begining to drag item: ' + item);
     }
-    releaseDrop(event) {
-        let index = this.itemsToDrop.indexOf(event);
-  	/* if (index >= 0){
-  		setTimeout(() => {(this.checkType(event,index),100)});
-  	} */
+    private releaseDrop(event) {
+        
     }
 }

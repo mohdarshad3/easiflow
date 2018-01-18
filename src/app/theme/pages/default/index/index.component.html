@@ -116,6 +116,14 @@
 										<tabs-control></tabs-control>
 									</div>
 									
+									<!-- Stracture tools -->
+									<div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'dividercontrol'">
+										<divider-control></divider-control>
+									</div>
+									<div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'gridcontrol'">
+										<grid-control></grid-control>
+									</div>
+									
 									
 									<!-- <div [innerHTML]="item.content" class="toggleElelement element-box-contents" *ngIf="item.content != 'input' && item.content != 'checkbox' && item.content != 'img' && removeItemClass"></div> -->
 									
@@ -126,8 +134,9 @@
 											<button type="button" class="menuBtn" (click)=toggleEmentStyle(item)><i class="fa fa-caret-down" aria-hidden="true"></i></button>
 											<button type="button" class="editBtn" (click)="removeDailog(item)"><i class="fa fa-times" aria-hidden="true"></i></button>
 											<div class="confirmElementDelete" *ngIf="item.showelEmentDelete" [ngClass]="{'transition':show}" [@enterAnimation]>
-												Are you sure?
-												<button type="button" class="btn deleteBtn" (click)="removeItem(item)">Delete</button>
+												<span>Are you sure?</span>
+												<button type="button" class="btn hideBtn" (click)="hideRemoveItem(item)">No</button>
+												<button type="button" class="btn deleteBtn" (click)="removeItem(item)">Yes</button>
 											</div>
 											<div class="elementStyles text-styling" *ngIf="item.showelEmentStyle" [ngClass]="{'transition':show}" [@enterAnimation]>
 												<ul>

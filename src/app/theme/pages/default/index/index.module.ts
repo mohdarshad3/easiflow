@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragDropDirectiveModule } from "angular4-drag-drop";
+import { DragDropDirectiveModule} from "angular4-drag-drop";
 import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index.component';
 import { LayoutModule } from '../../../layouts/layout.module';
@@ -22,6 +22,8 @@ import { FormControlComponent } from '../app-tools/formcontrol/form-control.comp
 import { ParagraphControlComponent } from '../app-tools/paragraphcontrol/paragraph-control.component';
 import { AnchorControlComponent } from '../app-tools/anchorcontrol/anchor-control.component';
 import { TabsControlComponent } from '../app-tools/tabscontrol/tabs-control.component';
+import { GridControlComponent } from '../app-tools/gridcontrol/grid-control.component';
+import { DividerControlComponent } from '../app-tools/dividercontrol/divider-control.component';
 
 
 const routes: Routes = [
@@ -39,27 +41,29 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), LayoutModule, DragDropDirectiveModule, NgbModule.forRoot()
+        CommonModule, RouterModule.forChild(routes), LayoutModule,DragDropDirectiveModule, NgbModule.forRoot()
     ], exports: [
         RouterModule
     ], declarations: [
         IndexComponent,
-        InputControlComponent,
-        TitleControlComponent,
-        CheckboxControlComponent,
-        LabelControlComponent,
-        DTCControlComponent,
-        DTPControlComponent,
-        ButtonControlComponent,
-        DropdownControlComponent,
-        TditorControlComponent,
-        ModalControlComponent,
-        RadioControlComponent,
-        ImageUploaderComponent,
-        FormControlComponent,
-        ParagraphControlComponent,
-        AnchorControlComponent,
-        TabsControlComponent,
+		InputControlComponent,
+		TitleControlComponent,
+		CheckboxControlComponent,
+		LabelControlComponent,
+		DTCControlComponent,
+		DTPControlComponent,
+		ButtonControlComponent,
+		DropdownControlComponent,
+		TditorControlComponent,
+		ModalControlComponent,
+		RadioControlComponent,
+		ImageUploaderComponent,
+		FormControlComponent,
+		ParagraphControlComponent,
+		AnchorControlComponent,
+		TabsControlComponent,
+		GridControlComponent,
+		DividerControlComponent,
     ]
 })
 export class IndexModule {

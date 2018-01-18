@@ -7,9 +7,12 @@
 	<!-- BEGIN: Aside Menu -->
 	<div  		id="m_ver_menu"  		class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark"  		data-menu-vertical="true" 		 data-menu-scrollable="false" data-menu-dropdown-timeout="500"   		>
 		
-		<h4 class="nav-title">Controls</h4>
+		<div class="m-menu__section">
+            <h4 class="m-menu__section-text nav-title">Controls</h4>
+            <i class="m-menu__section-icon flaticon-more-v3"></i>
+        </div>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
-			<li *ngFor="let item of itemsToDrop" class="m-menu__item">
+			<li *ngFor="let item of itemsControlToDrop" class="m-menu__item">
 				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)">
 					<i class="{{item.iconClass}}"></i>
 					<span class="m-menu__link-title">
@@ -27,15 +30,19 @@
 		
 		<h4 class="nav-title">Structure</h4>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
-			<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"  aria-haspopup="true" >
-				<a  routerLink="/form-builder" class="m-menu__link">
-					<i class="m-menu__link-icon flaticon-layout"></i>
-					<span class="m-menu__link-text">
-						Section
+			<li *ngFor="let item of itemsStractureToDrop" class="m-menu__item">
+				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)">
+					<i class="{{item.iconClass}}"></i>
+					<span class="m-menu__link-title">
+						<span class="m-menu__link-wrap">
+							<span class="m-menu__link-text">
+								{{item.name}}
+							</span>
+						</span>
 					</span>
 				</a>
 			</li>
-			<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"  aria-haspopup="true" >
+			<!-- <li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"  aria-haspopup="true" >
 				<a  routerLink="/form-builder" class="m-menu__link">
 					<i class="m-menu__link-icon fa fa-th-large"></i>
 					<span class="m-menu__link-text">
@@ -58,7 +65,7 @@
 						Grid
 					</span>
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 	
