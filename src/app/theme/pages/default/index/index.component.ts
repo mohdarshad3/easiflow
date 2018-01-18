@@ -32,7 +32,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     event: MouseEvent;
     clientX = 0;
     clientY = 0;
-    private itemsDropped: Array<any> = [];
+    itemsDropped: Array<any> = [];
     constructor(private _script: ScriptLoaderService) {
 
     }
@@ -45,7 +45,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this._script.loadScripts('app-index',
             ['assets/app/js/dashboard.js']);
     }
-    private addDropItem(event, obj) {
+    addDropItem(event, obj) {
         //debugger;
         if (event.renderid == undefined) {
             event.showCustomDiv = true;
@@ -66,12 +66,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
             }
         }
     }
-    private removeDailog(item) {
+    removeDailog(item) {
 
         item.showelEmentDelete = (!item.showelEmentDelete) ? true : false;
 
     }
-    private removeItem(item) {
+    removeItem(item) {
 
         item.showelEmentDelete = (!item.showelEmentDelete) ? true : false;
 
@@ -83,13 +83,13 @@ export class IndexComponent implements OnInit, AfterViewInit {
         }
     }
 
-    private hideCustomEditDiv(item) {
+    hideCustomEditDiv(item) {
         this.itemsDropped.forEach(function(item) {
             item.showCustomDiv = false;
         });
         event.stopPropagation();
     }
-    private showCustomEditDiv(item, event) {
+    showCustomEditDiv(item, event) {
         this.itemsDropped.forEach(function(item) {
             item.showCustomDiv = false;
         });
@@ -97,17 +97,17 @@ export class IndexComponent implements OnInit, AfterViewInit {
         event.stopPropagation();
     }
 
-    private toggleEmentStyle(item) {
+    toggleEmentStyle(item) {
         // show btn with id btnId in DOM
         //debugger;
         item.showelEmentStyle = (!item.showelEmentStyle) ? true : false;
 
     }
 
-    private startDrag(item) {
+    startDrag(item) {
         console.log('Begining to drag item: ' + item);
     }
-    private releaseDrop(event: MouseEvent) {
+    releaseDrop(event: MouseEvent) {
         //debugger;
         //this.clientX = event.clientX;
         // this.clientY = event.clientY;
