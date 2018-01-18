@@ -11,7 +11,7 @@ declare let mLayout: any;
 export class AsideNavComponent implements OnInit, AfterViewInit {
 
     dropItemType: any;
-    private itemsToDrop: Array<Object> = [
+    itemsToDrop: Array<Object> = [
         {
             name: 'Title',
             iconClass: 'm-menu__link-icon flaticon-type',
@@ -119,10 +119,10 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         mLayout.initAside();
     }
-    private startDrag(item) {
+    startDrag(item) {
         console.log('Begining to drag item: ' + item);
     }
-    private releaseDrop(event) {
+    releaseDrop(event) {
         let index = this.itemsToDrop.indexOf(event);
   	/* if (index >= 0){
   		setTimeout(() => {(this.checkType(event,index),100)});
