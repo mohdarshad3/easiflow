@@ -45,7 +45,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this._script.loadScripts('app-index',
             ['assets/app/js/dashboard.js']);
     }
-    addDropItem(event, obj) {
+    addDropItem(event) {
         //debugger;
         if (event.renderid == undefined) {
             event.showCustomDiv = true;
