@@ -87,15 +87,15 @@
     color: #ffffff;
 }
 
-.draggable-directive .m-portlet {
+/* .draggable-directive .m-portlet {
     min-height: 374px;
     background-color: #e0e8f7;
     border-radius: 6px;
     border: 2px dashed #81858b;
-}
+} */
 
 .draggable-directive {
-    padding: 20px 50px 0;
+    padding: 20px 50px 100px;
 }
 .drag-here-component {
     text-align: center;

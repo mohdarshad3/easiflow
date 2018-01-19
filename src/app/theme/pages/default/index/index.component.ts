@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit,ViewChild } from '@angular/core';
 import { Helpers } from '../../../../helpers';
 import { ScriptLoaderService } from '../../../../_services/script-loader.service';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { GridControlComponent } from '../app-tools/gridcontrol/grid-control.component';
 
 @Component({
     selector: "app-index",
@@ -23,6 +24,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 	 ],
 })
 export class IndexComponent implements OnInit, AfterViewInit {
+	@ViewChild(GridControlComponent) child;
 	showSelected : boolean;
 	showdataproperty:boolean;
 	removeItemClass : boolean;
@@ -30,9 +32,11 @@ export class IndexComponent implements OnInit, AfterViewInit {
 	event: MouseEvent;
     clientX = 0;
     clientY = 0;
-    private itemsDropped: Array<any> = [];
+	detectdrag=0;
+	itemsDropped: Array<any> = [];
+	// debugger;
     constructor(private _script: ScriptLoaderService) {
-
+		
     }
     ngOnInit() {
 		this.showSelected=(this.itemsDropped.length)>0?false:true;
@@ -43,27 +47,37 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this._script.loadScripts('app-index',
             ['assets/app/js/dashboard.js']);
     }
-    private addDropItem(event,obj) {
-		event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
-		if(event.renderid==undefined){
-			this.itemsDropped.forEach(function(item) {
-				item.showCustomDiv=false;
-			});
-			event.showBasicControl=(event.content!='dividercontrol' && event.content!='gridcontrol')?true:false;
-			event.showCustomDiv=true;
-			event.renderid=(this.itemsDropped.length+1);
-			this.itemsDropped.push(event);
-			if(this.itemsDropped.length>0)
-				this.showSelected=false;
-		}
-		else{
-			event.showCustomDiv=true;
-			let style='';
-			let getrenid=event.renderid;
-			let a = this.itemsDropped.find(event => event.renderid === getrenid);
-			if(a.renderid==getrenid){
+    private addDropItem(event) {
+		debugger;
+		if(this.child!=undefined && this.detectdrag!=0)
+			this.detectdrag = this.child.detectdrag;
+		/* else if(){
+		} */
+		
+		if(this.detectdrag===0){
+			event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
+			if(event.renderid==undefined){
+				this.itemsDropped.forEach(function(item) {
+					item.showCustomDiv=false;
+				});
+				event.showBasicControl=(event.content!='dividercontrol' && event.content!='gridcontrol')?true:false;
+				event.showCustomDiv=true;
+				event.renderid=(this.itemsDropped.length+1);
+				this.itemsDropped.push(event);
+				if(this.itemsDropped.length>0)
+					this.showSelected=false;
+			}
+			else{
+				event.showCustomDiv=true;
+				let style='';
+				let getrenid=event.renderid;
+				let a = this.itemsDropped.find(event => event.renderid === getrenid);
+				if(a.renderid==getrenid){
+				}
 			}
 		}
+		this.detectdrag=0;
+			
     }
 	private removeDailog(item){
 		item.showelEmentStyle=false;

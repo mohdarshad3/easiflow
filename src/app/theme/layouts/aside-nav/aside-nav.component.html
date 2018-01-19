@@ -12,7 +12,7 @@
         </div>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
 			<li *ngFor="let item of itemsControlToDrop" class="m-menu__item">
-				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)">
+				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)" title={{item.name}}>
 					<i class="{{item.iconClass}}"></i>
 					<span class="m-menu__link-title">
 						<span class="m-menu__link-wrap">
@@ -30,7 +30,7 @@
         </div>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
 			<li *ngFor="let item of itemsStractureToDrop" class="m-menu__item">
-				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)">
+				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)" title={{item.name}}>
 					<i class="{{item.iconClass}}"></i>
 					<span class="m-menu__link-title">
 						<span class="m-menu__link-wrap">
