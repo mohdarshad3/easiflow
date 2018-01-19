@@ -123,7 +123,7 @@
     position: relative;
     min-height: 180px;
 }
-.droppable.highlight>.m-portlet {
+.droppable.highlight .m-portlet {
     /* background-color: rgba(0,0,0,0.2); */
     opacity: 0.4;
 }
@@ -181,7 +181,7 @@
     margin-left: 30px;
     margin-right: 30px;
 }
-.element-box-contents-for-stracture {
+.element-box-contents-for-divider {
     border-top: 1px solid rgba(1,194,253,0.6);
     border-radius: 0;
     background-color: #ffffff;
@@ -193,7 +193,19 @@
     width: 100%;
     border-bottom: 1px solid rgba(1,194,253,0.6);
 }
-.element-box-contents-for-divider {
+.element-box-contents-for-spacer {
+    border-top: 1px solid rgba(1,194,253,0.6);
+    border-radius: 0;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    opacity: 0.7;
+    margin-top: 15px;
+    transition: all 0.1s ease-in;
+    width: 100%;
+    border-bottom: 1px solid rgba(1,194,253,0.6);
+}
+.element-box-contents-for-stracture {
     border-top: 1px solid rgba(1,194,253,0.6);
     border-radius: 0;
     background-color: #ffffff;
@@ -279,7 +291,7 @@
 .formControlrs>button:hover {
     background-color: #01c2fd;
 }
-.droppable.highlight {
+.droppable.highlight .m-portlet {
     border: dashed 1px #01c2fd;
 }
 .elementStyles>ul {

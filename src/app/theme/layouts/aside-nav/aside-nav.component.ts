@@ -113,7 +113,7 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         {
             name: 'Section',
             iconClass: 'm-menu__link-icon flaticon-layout',
-            content: '',
+            content: 'sectioncontrol',
             itemclass: 'item-section'
         },
         {
@@ -125,7 +125,7 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         {
             name: 'Spacer',
             iconClass: 'm-menu__link-icon fa fa-adjust',
-            content: '',
+            content: 'spacercontrol',
             itemclass: 'item-spacer'
         },
         {
@@ -133,6 +133,21 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
             iconClass: 'm-menu__link-icon flaticon-grid',
             content: 'gridcontrol',
             itemclass: 'item-grid'
+        },
+
+    ];
+	private itemsMediaToDrop: Array<Object> = [
+        {
+            name: 'File Attachment',
+            iconClass: 'm-menu__link-icon flaticon-layout',
+            content: 'fileattachmentcontrol',
+            itemclass: 'item-section'
+        },
+        {
+            name: 'Emded Video',
+            iconClass: 'm-menu__link-icon flaticon-metal-paper-clip',
+            content: 'embedvidcontrol',
+            itemclass: 'item-divider'
         },
 
     ]

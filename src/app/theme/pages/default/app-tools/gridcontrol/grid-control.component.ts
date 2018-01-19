@@ -2,7 +2,22 @@ import { Component, OnInit, ViewEncapsulation,Input, Output } from '@angular/cor
 import { trigger, style, animate, transition } from '@angular/animations';
 @Component({
     selector: 'grid-control',
-    templateUrl: './grid-control.component.html'
+    templateUrl: './grid-control.component.html',
+	encapsulation: ViewEncapsulation.None,
+	animations: [
+		trigger(
+		  'enterAnimation', [
+			transition(':enter', [
+			  style({opacity: 0}),
+			  animate('250ms', style({opacity: 1}))
+			]),
+			transition(':leave', [
+			  style({opacity: 1}),
+			  animate('250ms', style({opacity: 0}))
+			])
+		  ]
+		)
+	 ],
 })
 export class GridControlComponent {
 	@Input() 
@@ -15,24 +30,24 @@ export class GridControlComponent {
 		
     }
     ngAfterViewInit() {
-		/* this.itemsGridDropped.push({
+		this.itemsGridDropped.push({
+			renderid:(this.itemsGridDropped.length+1),
 			name: 'Title',
 			iconClass: 'm-menu__link-icon flaticon-type',
 			content: 'titlecontrol',
-			itemclass: 'item-title'
+			itemclass: 'item-title',
+			showBasicControl:true,
+			showCustomDiv:true
 		});
 		this.itemsGridDropped.push({
+			renderid:(this.itemsGridDropped.length+1),
 			name: 'Text Editor',
 			iconClass: 'm-menu__link-icon flaticon-signs',
 			content: 'tditorcontrol',
-			itemclass: 'item-textEditor'
+			itemclass: 'item-textEditor',
+			showBasicControl:true,
+			showCustomDiv:true
 		});
-		event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
-		if(event.renderid==undefined){
-			
-			event.showBasicControl=true;
-		}
-		this.detectdrag=1; */
     }
 	private addItemToGrid(event) {
 		event.showelEmentStyle=(event.content=='inputcontrol')?true:false;

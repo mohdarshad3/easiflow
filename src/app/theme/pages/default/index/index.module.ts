@@ -24,6 +24,10 @@ import { AnchorControlComponent } from '../app-tools/anchorcontrol/anchor-contro
 import { TabsControlComponent } from '../app-tools/tabscontrol/tabs-control.component';
 import { GridControlComponent } from '../app-tools/gridcontrol/grid-control.component';
 import { DividerControlComponent } from '../app-tools/dividercontrol/divider-control.component';
+import { SectionControlComponent } from '../app-tools/sectioncontrol/section-control.component';
+import { SpacerControlComponent } from '../app-tools/spacercontrol/spacer-control.component';
+import { FileattAchmentControlComponent } from '../app-tools/fileattachmentcontrol/fileattachment-control.component';
+import { EmbedVidControlComponent } from '../app-tools/embedvidcontrol/embedvid-control.component';
 
 
 const routes: Routes = [
@@ -64,6 +68,11 @@ const routes: Routes = [
 		TabsControlComponent,
 		GridControlComponent,
 		DividerControlComponent,
+		SectionControlComponent,
+		SpacerControlComponent,
+		FileattAchmentControlComponent,
+		EmbedVidControlComponent
+		
     ]
 })
 export class IndexModule {

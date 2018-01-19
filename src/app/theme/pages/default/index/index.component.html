@@ -75,12 +75,25 @@
 										<anchor-control *ngIf="item.content == 'anchorcontrol'"></anchor-control>
 										<tabs-control *ngIf="item.content == 'tabscontrol'"></tabs-control>
 									</div>
-									<!-- Stracture control -->
-									<div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'dividercontrol'">
+									 <!-- Stracture control -->
+									 <div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'sectioncontrol'">
+										<section-control></section-control>
+									 </div>
+									 <div class="toggleElelement element-box-contents-for-divider" *ngIf="item.content == 'dividercontrol'">
 										<divider-control></divider-control>
 									 </div>
-									 <div class="toggleElelement element-box-contents-for-divider" *ngIf="item.content == 'gridcontrol'">
+									 <div class="toggleElelement element-box-contents-for-spacer" *ngIf="item.content == 'spacercontrol'">
+										<spacer-control></spacer-control>
+									 </div>
+									 <div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'gridcontrol'">
 										<grid-control></grid-control>
+									 </div>
+									 <!-- Media control -->
+									 <div class="toggleElelement element-box-contents" *ngIf="item.content == 'fileattachmentcontrol'">
+										<fileattachment-control></fileattachment-control>
+									 </div>
+									 <div class="toggleElelement element-box-contents" *ngIf="item.content == 'embedvidcontrol'">
+										<embedvid-control></embedvid-control>
 									 </div>
 									<div class="elementOptions" *ngIf="item.showCustomDiv">
 										<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>

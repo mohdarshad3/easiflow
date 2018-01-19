@@ -48,11 +48,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
             ['assets/app/js/dashboard.js']);
     }
     private addDropItem(event) {
-		debugger;
-		if(this.child!=undefined && this.detectdrag!=0)
+		if(this.child!=undefined)
 			this.detectdrag = this.child.detectdrag;
-		/* else if(){
-		} */
 		
 		if(this.detectdrag===0){
 			event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
@@ -77,6 +74,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
 			}
 		}
 		this.detectdrag=0;
+		if(this.child!=undefined){
+			this.child.detectdrag=0;
+		}
 			
     }
 	private removeDailog(item){

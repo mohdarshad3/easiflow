@@ -47,19 +47,15 @@
             <i class="m-menu__section-icon flaticon-more-v2"></i>
         </div>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
-			<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"  aria-haspopup="true" >
-				<a  routerLink="/form-builder" class="m-menu__link">
-					<i class="m-menu__link-icon flaticon-metal-paper-clip"></i>
-					<span class="m-menu__link-text">
-						File Attachment
-					</span>
-				</a>
-			</li>
-			<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"  aria-haspopup="true" >
-				<a  routerLink="/form-builder" class="m-menu__link">
-					<i class="m-menu__link-icon flaticon-video-camera"></i>
-					<span class="m-menu__link-text">
-						Embed Video
+			<li *ngFor="let item of itemsMediaToDrop" class="m-menu__item">
+				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)" title={{item.name}}>
+					<i class="{{item.iconClass}}"></i>
+					<span class="m-menu__link-title">
+						<span class="m-menu__link-wrap">
+							<span class="m-menu__link-text">
+								{{item.name}}
+							</span>
+						</span>
 					</span>
 				</a>
 			</li>
