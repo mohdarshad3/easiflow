@@ -1,6 +1,18 @@
-<div class="form-group m-form__group row dtc-control">
+<div class="form-group m-form__group row dtc-control" (click)=showCustomEditDiv(itemRenderId);>
 	<label class="col-5 col-form-label" for="example-date-input">Date/Time Picker</label>
 	<div class="col-4">
 		<input class="form-control m-input" id="example-datetime-local-input" type="datetime-local" value="2011-08-19T13:45:00">
+	</div>
+</div>
+<div class="elementOptions" *ngIf="showCustomDiv">
+	<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>
+	<div ngbDropdown class="formControlrs">
+		   <button type="button" class="menuBtn" (click)=toggleEmentStyle()><i class="fa fa-caret-down" aria-hidden="true"></i></button> 
+		   <button type="button" class="editBtn" (click)="removeDailog()"><i class="fa fa-times" aria-hidden="true"></i></button>
+		   <div class="confirmElementDelete" [ngClass]="{'transition':show}" *ngIf="showElementDelete" [@enterAnimation]>
+				<span>Are you sure?</span>
+				<button type="button" class="btn hideBtn" (click)="hideRemoveItem()">No</button>
+				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId)">Yes</button>
+		   </div>
 	</div>
 </div>

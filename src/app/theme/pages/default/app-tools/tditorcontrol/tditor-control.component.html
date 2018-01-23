@@ -1,2 +1,14 @@
-<div class="col-12"  style="height: 200px;">
+<div class="col-12"  style="height: 200px;" (click)=showCustomEditDiv(itemRenderId);>
+</div>
+<div class="elementOptions" *ngIf="showCustomDiv">
+	<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>
+	<div ngbDropdown class="formControlrs">
+		   <button type="button" class="menuBtn" (click)=toggleEmentStyle()><i class="fa fa-caret-down" aria-hidden="true"></i></button> 
+		   <button type="button" class="editBtn" (click)="removeDailog()"><i class="fa fa-times" aria-hidden="true"></i></button>
+		   <div class="confirmElementDelete" [ngClass]="{'transition':show}" *ngIf="showElementDelete" [@enterAnimation]>
+				<span>Are you sure?</span>
+				<button type="button" class="btn hideBtn" (click)="hideRemoveItem()">No</button>
+				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId)">Yes</button>
+		   </div>
+	</div>
 </div>

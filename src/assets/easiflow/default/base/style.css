@@ -122,6 +122,7 @@
     margin-bottom: 0;
     position: relative;
     min-height: 180px;
+    width: 100%;
 }
 .droppable.highlight .m-portlet {
     /* background-color: rgba(0,0,0,0.2); */
@@ -217,6 +218,8 @@
     width: 100%;
     border-bottom: 1px solid rgba(1,194,253,0.6);
     min-height: 300px;
+    display: flex;
+    align-items: center;
 }
 .element-box-contents:hover {
     opacity: 1;
@@ -368,4 +371,196 @@
 .formControlrs>button:focus {
     outline: 0;
     background-color: #01c2fd;
+}
+
+
+/* Grid Property */
+.elementOptions .dropdown-menu {
+    margin: 12px -12px 0;
+    min-width: 25rem;
+    padding: 0;
+}
+ul.selectGrid {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+ul.selectGrid>li {
+    flex-basis:  33.33%;
+    text-align:  center;
+    border-right:  1px solid #fff;
+    border-bottom:  1px solid #fff;
+}
+
+ul.selectGrid>li>.grid-col {
+    background-color: #e0e8f7;
+    border:  0;
+    display:  block;
+    width:  100%;
+    padding:  15px 6px;
+    color:  #6d7a8f;
+    text-transform:  uppercase;
+    font-weight:  500;
+    cursor:  pointer;
+}
+
+ul.selectGrid>li:nth-child(3n+3) {
+    border:  0;
+}
+
+ul.selectGrid>li.active>.grid-col {
+    background-color:  #01c2fd;
+    color:  #fff;
+}
+ul.gridOtherProperty {
+    list-style: none;
+    padding: 0 15px 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+ul.gridOtherProperty>li:first-child {
+    flex: 0 0 100%;
+    margin: 15px 0;
+}
+
+ul.gridOtherProperty>li {
+    flex: 0 0 50%;
+    text-align:  center;
+}
+
+ul.gridOtherProperty>li>button {
+    width: 88%;
+}
+.confirmGrid>button {
+    border:  0;
+    width:  25px;
+    height:  25px;
+    border-radius:  50%;
+    margin: 0 4px;
+    padding:  0;
+    cursor:  pointer;
+}
+
+.gridFooter {
+    display:  flex;
+    justify-content:  flex-end;
+    padding: 15px;
+}
+.m-badge--alert {
+    background-color: #fa6d6d;
+    color: #fff;
+}
+.confirmGrid>button:focus {
+    outline:  0;
+}
+
+a.c-inline-editor {
+    font-size: 18px;
+    margin: 0;
+    text-decoration: none;
+    font-weight: normal;
+}
+#inlineEditWrapper input {
+    min-width: 300px;
+}
+inline-editor-text {
+    margin-right: 4px;
+}
+ul.grid-templates {
+    list-style:  none;
+    padding:  0;
+}
+
+ul.grid-templates>li {
+    font-size:  12px;
+    text-align:  center;
+    padding: 10px;
+	cursor:pointer;
+	transition: all 0.2s ease-in;
+}
+li.selected-grid {
+    background-color: #01c2fd;
+}
+
+.grid-template-icon {
+    background-color:  #fff;
+    padding:  4px;
+    margin-bottom:  8px;
+}
+
+ul.grid-templates>li:hover {
+    background-color:  #e0e8f7;
+}
+
+
+.m-form.m-form--fit .m-form__group .titleEditNav .m-nav__link, .m-form.m-form--fit .m-form__group .titleEditNav .m-nav__section-text {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    line-height: 40px;
+    justify-content: space-between;
+}
+
+.m-form.m-form--fit .m-form__group .titleEditNav li {
+}
+
+.m-form.m-form--fit .m-form__group .titleEditNav li.m-nav__section--first > span {
+    padding:  0;
+}
+
+.m-form.m-form--fit .m-form__group .titleEditNav a i {
+    line-height:  40px;
+}
+
+
+
+ul.inputEditNav {
+    padding:  0;
+    list-style:  none;
+    margin-top:  1rem;
+    position:  relative;
+}
+
+.formControlrs ul.inputEditNav>li>span, .formControlrs ul.inputEditNav>li>a {
+    display:  flex;
+    justify-content:  space-between;
+    line-height:  40px;
+    color:  #676c7b;
+    text-decoration:  none;
+}
+
+
+ul.inputEditNav>li.m-nav__section--first {
+    border-bottom:  1px solid #eee;
+    margin-bottom: 12px;
+}
+
+.formControlrs ul.inputEditNav>li>a>i {
+    line-height:  40px;
+}
+
+ul.inputEditNav:before {
+    content:  "";
+    position:  absolute;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+    top: -21px;
+    left: 18px;
+}
+
+.formControlrs ul.inputEditNav>li>a:hover {
+    color: #01c2fd;
+}
+
+grid-control {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

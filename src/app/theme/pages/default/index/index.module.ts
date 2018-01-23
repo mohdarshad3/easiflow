@@ -28,6 +28,8 @@ import { SectionControlComponent } from '../app-tools/sectioncontrol/section-con
 import { SpacerControlComponent } from '../app-tools/spacercontrol/spacer-control.component';
 import { FileattAchmentControlComponent } from '../app-tools/fileattachmentcontrol/fileattachment-control.component';
 import { EmbedVidControlComponent } from '../app-tools/embedvidcontrol/embedvid-control.component';
+import {InlineEditorModule} from '@qontu/ngx-inline-editor';
+import { FormsModule }   from '@angular/forms';
 
 
 const routes: Routes = [
@@ -45,7 +47,7 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), LayoutModule,DragDropDirectiveModule, NgbModule.forRoot()
+        CommonModule, RouterModule.forChild(routes), LayoutModule,DragDropDirectiveModule,InlineEditorModule,FormsModule, NgbModule.forRoot()
     ], exports: [
         RouterModule
     ], declarations: [

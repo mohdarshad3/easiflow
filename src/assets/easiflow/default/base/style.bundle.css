@@ -1580,7 +1580,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .form-inline {
   display: flex;
   flex-flow: row wrap;
-  align-items: center; }
+  align-items: center;justify-content: center; }
   .form-inline .form-check {
     width: 100%; }
   @media (min-width: 576px) {
@@ -1658,13 +1658,15 @@ fieldset[disabled] a.btn {
   pointer-events: none; }
 
 .btn-primary {
-  color: #fff;
-  background-color: #5867dd;
-  border-color: #5867dd; }
+    color: #fff;
+    background-color: #01c2fd;
+    border-color: #01c2fd;
+}
   .btn-primary:hover {
     color: #fff;
-    background-color: #384ad7;
-    border-color: #2e40d4; }
+    background-color: #293140;
+    border-color: #293140;
+}
   .btn-primary:focus, .btn-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(88, 103, 221, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
@@ -3657,8 +3659,9 @@ button.close {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
-    margin: 30px auto; }
+    max-width: 615px;
+    margin: 30px auto;
+}
   .modal-sm {
     max-width: 300px; } }
 
@@ -6396,13 +6399,15 @@ a.text-dark:focus, a.text-dark:hover {
     box-shadow: 0 0 0 0.2rem rgba(152, 22, 244, 0.5); }
 
 .btn-primary {
-  color: #fff;
-  background-color: #5867dd;
-  border-color: #5867dd; }
+    color: #fff;
+    background-color: #01c2fd;
+    border-color: #01c2fd;
+}
   .btn-primary:hover {
     color: #fff;
-    background-color: #384ad7;
-    border-color: #2e40d4; }
+    background-color: #293140;
+    border-color: #293140;
+}
   .btn-primary:focus, .btn-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(88, 103, 221, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
@@ -10315,7 +10320,9 @@ b, strong {
     vertical-align: middle;
     margin: 20px 0 10px 0; }
     .m-nav > .m-nav__section.m-nav__section--first {
-      margin-top: 0; }
+    margin-top: 0;
+    margin-bottom: -12px;
+}
     .m-nav > .m-nav__section.m-nav__section--last {
       margin-bottom: 0; }
     .m-nav > .m-nav__section .m-nav__section-text {
@@ -10383,9 +10390,11 @@ b, strong {
       margin-left: 0;
       margin-right: 0; }
 
-.m-nav > .m-nav__item > .m-nav__link .m-nav__link-text {
-  color: #6f727d;
-  font-weight: 400; }
+.m-nav > .m-nav__item > .m-nav__link .m-nav__link-text, .m-nav > .m-nav__item > .m-nav__section .m-nav__link-text {
+    color: #6f727d;
+    font-weight: 400;
+    line-height: 40px;
+}
 
 .m-nav > .m-nav__item > .m-nav__link .m-nav__link-icon {
   color: #c1bfd0; }

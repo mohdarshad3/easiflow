@@ -1,5 +1,55 @@
-<div class="form-group m-form__group row">
-	<div class="col-12">
-		<input class="form-control m-input" id="example-text-input" type="text" placeholder="Click here to edit input" style="font-size:8px">
+<div class="form-group m-form__group row" (click)=showCustomEditDiv(itemRenderId);>
+ <div class="flex-items">
+	  <div class="form-group m-form__group row">
+		   <label for="exampleInputEmail1">
+			<inline-editor type="text" [(ngModel)]="editableText" name="editableText1" size="8"></inline-editor>
+		   </label>
+		   <input aria-describedby="emailHelp" class="form-control m-input"  placeholder="Click here to edit input">
+	  </div>
+ </div>
+</div>
+<div class="elementOptions" *ngIf="showCustomDiv">
+	<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>
+	<div ngbDropdown class="formControlrs">
+	   <button type="button" class="menuBtn" (click)=toggleEmentStyle()><i class="fa fa-caret-down" aria-hidden="true"></i></button> 
+	   <button type="button" class="editBtn" (click)="removeDailog()"><i class="fa fa-times" aria-hidden="true"></i></button>
+	   <div class="confirmElementDelete" [ngClass]="{'transition':show}" *ngIf="showElementDelete" [@enterAnimation]>
+			<span>Are you sure?</span>
+			<button type="button" class="btn hideBtn" (click)="hideRemoveItem()">No</button>
+			<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId)">Yes</button>
+	   </div>
+	    <div class="editInputStyle" *ngIf="showelEmentStyle" [@enterAnimation] aria-labelledby="dropdownBasic1">
+            <ul class="inputEditNav">
+				 <li class="m-nav__section--first">
+					<span class="m-nav__section-text m-form__group form-group row">
+						<span class="m-nav__link-text">Required</span>
+						<span class="m-switch m-switch--icon m-switch--accent">
+							<label>
+								<input checked="checked" name="" type="checkbox">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				 </li>
+				 <li class="m-nav__item">
+					<a class="m-nav__link  m-form__group form-group row" href="" ng-reflect-href="">
+						<span class="m-nav__link-text">Instructions</span>
+						<i class="m-menu__hor-arrow la la-angle-right"></i>
+					</a>
+				 </li>
+				 <li class="m-nav__item">
+					<a class="m-nav__link  m-form__group form-group row" href="" ng-reflect-href="">
+						<span class="m-nav__link-text">Spacing</span>
+						<i class="m-menu__hor-arrow la la-angle-right"></i>
+					</a>
+				 </li>
+				 <li class="m-nav__item">
+					<a class="m-nav__link  m-form__group form-group row" href="" ng-reflect-href="">
+						<span class="m-nav__link-text">Advanced</span>
+						<i class="m-menu__hor-arrow la la-angle-right"></i>
+					</a>
+				 </li>
+			</ul>
+        </div>
 	</div>
 </div>

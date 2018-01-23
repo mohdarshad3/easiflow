@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation,Input, Output } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'grid-control',
     templateUrl: './grid-control.component.html',
@@ -22,12 +23,15 @@ import { trigger, style, animate, transition } from '@angular/animations';
 export class GridControlComponent {
 	@Input() 
 	detectdrag=0;
+	closeResult:String;
 	itemsGridDropped: Array<any> = [];
 	autoRenderGrid: Array<any> = [];
-	constructor() {
-    }
-    ngOnInit() {
+	createNewGrid: Array<any> = [];
+	constructor(private modalService: NgbModal) {
 		
+	}
+    ngOnInit() {
+		this.createNewGrid.push({'classname':'col-12', 'demoTitle':'Heading (Grid 12)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'});
     }
     ngAfterViewInit() {
 		this.itemsGridDropped.push({
@@ -49,6 +53,13 @@ export class GridControlComponent {
 			showCustomDiv:true
 		});
     }
+	open(content) {
+	  this.modalService.open(content).result.then((result) => {
+		this.closeResult = `Closed with: ${result}`;
+	  }, (reason) => {
+		this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+	  });
+	}
 	private addItemToGrid(event) {
 		event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
 		if(event.renderid==undefined){
@@ -98,6 +109,23 @@ export class GridControlComponent {
 			item.showelEmentStyle=(!item.showelEmentStyle)?true:false;
 		else
 			item.showelEmentStyle=false;
+	}
+	private getGridCol(colEvent) {
+		this.createNewGrid = [];
+		switch (colEvent) {
+			case 1:
+				this.createNewGrid.push({'classname':'col-6', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'},{'classname':'col-6', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'});
+				break;
+			case 2:
+				this.createNewGrid.push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'},{'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'});
+				break;
+			case 3:
+				this.createNewGrid.push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'});
+				break;
+			default:
+				this.createNewGrid.push({'classname':'col-12', 'demoTitle':'Heading (Grid 12)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.'});
+		}
+  
 	}
 
 }

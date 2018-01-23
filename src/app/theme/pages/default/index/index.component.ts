@@ -24,17 +24,14 @@ import { GridControlComponent } from '../app-tools/gridcontrol/grid-control.comp
 	 ],
 })
 export class IndexComponent implements OnInit, AfterViewInit {
+	//initialize variable
 	@ViewChild(GridControlComponent) child;
 	showSelected : boolean;
 	showdataproperty:boolean;
 	removeItemClass : boolean;
 	showelEmentStyle:false;
-	event: MouseEvent;
-    clientX = 0;
-    clientY = 0;
 	detectdrag=0;
 	itemsDropped: Array<any> = [];
-	// debugger;
     constructor(private _script: ScriptLoaderService) {
 		
     }
@@ -47,19 +44,18 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this._script.loadScripts('app-index',
             ['assets/app/js/dashboard.js']);
     }
+	//push drag element in to array
     private addDropItem(event) {
 		if(this.child!=undefined)
 			this.detectdrag = this.child.detectdrag;
 		
 		if(this.detectdrag===0){
-			event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
-			if(event.renderid==undefined){
-				this.itemsDropped.forEach(function(item) {
-					item.showCustomDiv=false;
-				});
+			if(event.itemRenderId==undefined){
 				event.showBasicControl=(event.content!='dividercontrol' && event.content!='gridcontrol')?true:false;
+				event.itemRenderId=(this.itemsDropped.length+1);
+				event.divClass="element-box-contents";
+				event.showElementDelete=event.showelEmentStyle=false;
 				event.showCustomDiv=true;
-				event.renderid=(this.itemsDropped.length+1);
 				this.itemsDropped.push(event);
 				if(this.itemsDropped.length>0)
 					this.showSelected=false;
@@ -67,59 +63,29 @@ export class IndexComponent implements OnInit, AfterViewInit {
 			else{
 				event.showCustomDiv=true;
 				let style='';
-				let getrenid=event.renderid;
-				let a = this.itemsDropped.find(event => event.renderid === getrenid);
-				if(a.renderid==getrenid){
+				let getrenid=event.itemRenderId;
+				let a = this.itemsDropped.find(event => event.itemRenderId === getrenid);
+				if(a.itemRenderId==getrenid){
 				}
 			}
 		}
 		this.detectdrag=0;
 		if(this.child!=undefined){
 			this.child.detectdrag=0;
-		}
-			
+		}		
     }
-	private removeDailog(item){
-		item.showelEmentStyle=false;
-		item.showelEmentDelete=(!item.showelEmentDelete)?true:false;
-	}
-	private removeItem(item){
-		item.showelEmentDelete=(!item.showelEmentDelete)?true:false;
-		let getrenid=item.renderid;
-		let a = this.itemsDropped.find(item => item.renderid === getrenid);
-		if(a.renderid==getrenid){
-			this.itemsDropped.splice(this.itemsDropped.indexOf(a), 1);
-			this.showSelected=(this.itemsDropped.length)>0?false:true;
-		}
-	}
-	private hideRemoveItem(item){
-		item.showelEmentDelete=false;
-	}
+	//hide custome edit div
 	private hideCustomEditDiv(item) {
 		this.itemsDropped.forEach(function(item) {
+			item.divClass="";
 			item.showCustomDiv=false;
 		});
-		event.stopPropagation();
 	}
-	 private showCustomEditDiv(item,event){
-		this.itemsDropped.forEach(function(item) {
-			item.showCustomDiv=false;
-		});
-		item.showCustomDiv=true;
-		event.stopPropagation();
-	}
-	
-	private toggleEmentStyle(item) {
-		item.showelEmentDelete=false;
-		if(item.content=='inputcontrol')
-			item.showelEmentStyle=(!item.showelEmentStyle)?true:false;
-		else
-			item.showelEmentStyle=false;
-	}
-	
+	//start drag element
 	private startDrag(item) {
         console.log('Begining to drag item: ' + item);
     }
+	//release drop position
     private releaseDrop(event: MouseEvent) {
 		console.log('Release to drag item:');
     }
