@@ -60,6 +60,9 @@ export class GridControlComponent {
 		this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 	  });
 	}
+	private getDismissReason(reason: any): string {
+		return (reason === ModalDismissReasons.ESC)? 'by pressing ESC' : (reason === ModalDismissReasons.BACKDROP_CLICK) ? 'by clicking on a backdrop':`with: ${reason}`;
+	}
 	private addItemToGrid(event) {
 		event.showelEmentStyle=(event.content=='inputcontrol')?true:false;
 		if(event.renderid==undefined){
