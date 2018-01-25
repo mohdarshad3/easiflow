@@ -1,4 +1,4 @@
-<div class="col-12" (click)=showCustomEditDiv(itemRenderId);>
+<div class="col-12" (click)=showCustomEditDiv(itemRenderId,arrayType);>
 	<div class="form-group m-form__group">
 		<video width="400" controls>
 		  <source src="./assets/easiflow/default/media/video/sample-video.mp4" type="video/mp4" />
@@ -14,7 +14,7 @@
 		   <div class="confirmElementDelete" [ngClass]="{'transition':show}" *ngIf="showElementDelete" [@enterAnimation]>
 				<span>Are you sure?</span>
 				<button type="button" class="btn hideBtn" (click)="hideRemoveItem()">No</button>
-				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId)">Yes</button>
+				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId,arrayType)">Yes</button>
 		   </div>
 	</div>
 </div>

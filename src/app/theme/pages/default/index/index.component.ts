@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, AfterViewInit,ViewChild } from '@
 import { Helpers } from '../../../../helpers';
 import { ScriptLoaderService } from '../../../../_services/script-loader.service';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { GridControlComponent } from '../app-tools/gridcontrol/grid-control.component';
+//import { GridControlComponent } from '../app-tools/gridcontrol/grid-control.component';
 
 @Component({
     selector: "app-index",
@@ -25,12 +25,13 @@ import { GridControlComponent } from '../app-tools/gridcontrol/grid-control.comp
 })
 export class IndexComponent implements OnInit, AfterViewInit {
 	//initialize variable
-	@ViewChild(GridControlComponent) child;
+	//@ViewChild(GridControlComponent) child;
 	showSelected : boolean;
 	showdataproperty:boolean;
 	removeItemClass : boolean;
 	showelEmentStyle:false;
-	detectdrag=0;
+	itemsGridDropped:Array<any> = [];
+	createNewGrid:Array<any> = [];
 	itemsDropped: Array<any> = [];
     constructor(private _script: ScriptLoaderService) {
 		
@@ -46,33 +47,26 @@ export class IndexComponent implements OnInit, AfterViewInit {
     }
 	//push drag element in to array
     private addDropItem(event) {
-		if(this.child!=undefined)
-			this.detectdrag = this.child.detectdrag;
-		
-		if(this.detectdrag===0){
-			if(event.itemRenderId==undefined){
-				event.showBasicControl=(event.content!='dividercontrol' && event.content!='gridcontrol')?true:false;
-				event.itemRenderId=(this.itemsDropped.length+1);
-				event.divClass="element-box-contents";
-				event.showElementDelete=event.showelEmentStyle=false;
-				event.showCustomDiv=true;
-				this.itemsDropped.push(event);
-				if(this.itemsDropped.length>0)
-					this.showSelected=false;
-			}
-			else{
-				event.showCustomDiv=true;
-				let style='';
-				let getrenid=event.itemRenderId;
-				let a = this.itemsDropped.find(event => event.itemRenderId === getrenid);
-				if(a.itemRenderId==getrenid){
-				}
-			}
+		if(event.itemRenderId==undefined){
+			event.showBasicControl=(event.content != 'dividercontrol' && event.content != 'gridcontrol' && event.content != 'sectioncontrol' && event.content != 'spacercontrol' && event.content != 'fileattachmentcontrol'  && event.content != 'embedvidcontrol')?true:false;
+			event.arrayType="Main Grid";
+			event.itemRenderId=(this.itemsDropped.length+1);
+			event.divClass="element-box-contents";
+			event.Array
+			event.showElementDelete=event.showelEmentStyle=false;
+			event.showCustomDiv=true;
+			this.itemsDropped.push(event);
+			if(this.itemsDropped.length>0)
+				this.showSelected=false;
 		}
-		this.detectdrag=0;
-		if(this.child!=undefined){
-			this.child.detectdrag=0;
-		}		
+		else{
+			event.showCustomDiv=true;
+			let style='';
+			let getrenid=event.itemRenderId;
+			let a = this.itemsDropped.find(event => event.itemRenderId === getrenid);
+			if(a.itemRenderId==getrenid){
+			}
+		}	
     }
 	//hide custome edit div
 	private hideCustomEditDiv(item) {
@@ -80,6 +74,17 @@ export class IndexComponent implements OnInit, AfterViewInit {
 			item.divClass="";
 			item.showCustomDiv=false;
 		});
+		if(this.itemsGridDropped.length>0)
+		{
+			this.indexcomponenet.itemsGridDropped.forEach(function(item,$index) {
+				item.forEach(function(item,$index) {
+					item.forEach(function(item,$index) {
+						item.divClass="";
+						item.showCustomDiv=false;
+					});
+				});
+			});
+		}
 	}
 	//start drag element
 	private startDrag(item) {

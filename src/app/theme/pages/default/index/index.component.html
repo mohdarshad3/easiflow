@@ -56,44 +56,48 @@
 						<div class="dragged-item {{item.itemclass}}" *ngFor="let item of itemsDropped;let dropIndex = index" [ngClass]="{'transition':show}" [@enterAnimation]>
 							<div class="editArea">
 								<div class="customField" >
-									<!-- Basic control-->
-									<div class="toggleElelement" [ngClass]="item.divClass" *ngIf="item.showBasicControl">
-										<title-control *ngIf="item.content == 'titlecontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></title-control>
-										<label-control *ngIf="item.content == 'labelcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></label-control>
-										<input-control *ngIf="item.content == 'inputcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></input-control>
-										<checkbox-control *ngIf="item.content == 'checkboxcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></checkbox-control>
-										<dtc-control *ngIf="item.content == 'dtccontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></dtc-control>
-										<dtp-control *ngIf="item.content == 'dtpcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></dtp-control>
-										<button-control *ngIf="item.content == 'buttoncontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></button-control>
-										<dropdown-control *ngIf="item.content == 'dropdowncontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></dropdown-control>
-										<tditor-control *ngIf="item.content == 'tditorcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></tditor-control>
-										<modal-control *ngIf="item.content == 'modalcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></modal-control>
-										<radio-control *ngIf="item.content == 'radiocontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></radio-control>
-										<image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'" *ngIf="item.content == 'imageuploader'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></image-uploader>
-										<form-control *ngIf="item.content == 'formcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></form-control>
-										<paragraph-control *ngIf="item.content == 'paragraphcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></paragraph-control>
-										<anchor-control *ngIf="item.content == 'anchorcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></anchor-control>
-										<tabs-control *ngIf="item.content == 'tabscontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></tabs-control>
+									<div class="container">
+										<!-- Basic control-->
+										<div class="toggleElelement" [ngClass]="item.divClass" *ngIf="item.showBasicControl">
+											<title-control *ngIf="item.content == 'titlecontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></title-control>
+											<label-control *ngIf="item.content == 'labelcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></label-control>
+											<input-control *ngIf="item.content == 'inputcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></input-control>
+											<checkbox-control *ngIf="item.content == 'checkboxcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></checkbox-control>
+											<dtc-control *ngIf="item.content == 'dtccontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></dtc-control>
+											<dtp-control *ngIf="item.content == 'dtpcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></dtp-control>
+											<button-control *ngIf="item.content == 'buttoncontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></button-control>
+											<dropdown-control *ngIf="item.content == 'dropdowncontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></dropdown-control>
+											<tditor-control *ngIf="item.content == 'tditorcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></tditor-control>
+											<modal-control *ngIf="item.content == 'modalcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></modal-control>
+											<radio-control *ngIf="item.content == 'radiocontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></radio-control>
+											<image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'" *ngIf="item.content == 'imageuploader'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></image-uploader>
+											<form-control *ngIf="item.content == 'formcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></form-control>
+											<paragraph-control *ngIf="item.content == 'paragraphcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></paragraph-control>
+											<anchor-control *ngIf="item.content == 'anchorcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></anchor-control>
+											<tabs-control *ngIf="item.content == 'tabscontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></tabs-control>
+										</div>
 									</div>
-									 <!-- Stracture control -->
+									<!-- Stracture control -->
 									 <div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'sectioncontrol'">
-										<section-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></section-control>
+										<section-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></section-control>
 									 </div>
-									 <div class="toggleElelement element-box-contents-for-divider" *ngIf="item.content == 'dividercontrol'">
-										<divider-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></divider-control>
+									 <div class="container">
+										 <div class="toggleElelement element-box-contents-for-divider" *ngIf="item.content == 'dividercontrol'">
+											<divider-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></divider-control>
+										 </div>
 									 </div>
 									 <div class="toggleElelement element-box-contents-for-spacer" *ngIf="item.content == 'spacercontrol'">
-										<spacer-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></spacer-control>
+										<spacer-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></spacer-control>
 									 </div>
 									 <div class="toggleElelement element-box-contents-for-stracture" *ngIf="item.content == 'gridcontrol'">
-										<grid-control></grid-control>
+										<grid-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></grid-control>
 									 </div>
 									 <!-- Media control -->
 									 <div class="toggleElelement element-box-contents" *ngIf="item.content == 'fileattachmentcontrol'">
-										<fileattachment-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></fileattachment-control>
+										<fileattachment-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></fileattachment-control>
 									 </div>
 									 <div class="toggleElelement element-box-contents" *ngIf="item.content == 'embedvidcontrol'">
-										<embedvid-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv></embedvid-control>
+										<embedvid-control [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></embedvid-control>
 									 </div>
 								</div>
 							</div>

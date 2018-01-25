@@ -30,6 +30,7 @@ import { FileattAchmentControlComponent } from '../app-tools/fileattachmentcontr
 import { EmbedVidControlComponent } from '../app-tools/embedvidcontrol/embedvid-control.component';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { FormsModule }   from '@angular/forms';
+import {EditorModule} from 'primeng/components/editor/editor';
 
 
 const routes: Routes = [
@@ -47,7 +48,7 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), LayoutModule,DragDropDirectiveModule,InlineEditorModule,FormsModule, NgbModule.forRoot()
+        CommonModule, RouterModule.forChild(routes), LayoutModule,DragDropDirectiveModule,InlineEditorModule,FormsModule, EditorModule,NgbModule.forRoot()
     ], exports: [
         RouterModule
     ], declarations: [

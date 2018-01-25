@@ -1,4 +1,4 @@
-<div class="form-group m-form__group row" (click)=showCustomEditDiv(itemRenderId);>
+<div class="form-group m-form__group row" (click)=showCustomEditDiv(itemRenderId,arrayType);>
 	<label class="col-4 col-form-label" for="exampleSelect1">
 		Drop Down
 	</label>
@@ -30,7 +30,7 @@
 		   <div class="confirmElementDelete" [ngClass]="{'transition':show}" *ngIf="showElementDelete" [@enterAnimation]>
 				<span>Are you sure?</span>
 				<button type="button" class="btn hideBtn" (click)="hideRemoveItem()">No</button>
-				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId)">Yes</button>
+				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId,arrayType)">Yes</button>
 		   </div>
 	</div>
 </div>

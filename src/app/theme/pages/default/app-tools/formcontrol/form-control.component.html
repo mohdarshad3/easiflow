@@ -1,4 +1,4 @@
-<div class="col-12" (click)=showCustomEditDiv(itemRenderId);>
+<div class="col-12" (click)=showCustomEditDiv(itemRenderId,arrayType);>
 	<div class="m-portlet">
 		<div class="m-portlet__head">
 			<div class="m-portlet__head-caption">
@@ -106,7 +106,7 @@
 		   <div class="confirmElementDelete" [ngClass]="{'transition':show}" *ngIf="showElementDelete" [@enterAnimation]>
 				<span>Are you sure?</span>
 				<button type="button" class="btn hideBtn" (click)="hideRemoveItem()">No</button>
-				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId)">Yes</button>
+				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId,arrayType)">Yes</button>
 		   </div>
 	</div>
 </div>

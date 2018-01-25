@@ -1,4 +1,4 @@
-<div class="m-demo__preview m-demo__preview--btn" (click)=showCustomEditDiv(itemRenderId);>
+<div class="m-demo__preview m-demo__preview--btn" (click)=showCustomEditDiv(itemRenderId,arrayType);>
 	<button class="btn btn-secondary m-btn m-btn--custom" type="button">
 		Default
 	</button>
@@ -11,7 +11,7 @@
 		   <div class="confirmElementDelete" [ngClass]="{'transition':show}" *ngIf="showElementDelete" [@enterAnimation]>
 				<span>Are you sure?</span>
 				<button type="button" class="btn hideBtn" (click)="hideRemoveItem()">No</button>
-				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId)">Yes</button>
+				<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId,arrayType)">Yes</button>
 		   </div>
 	</div>
 </div>
