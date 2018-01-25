@@ -74,7 +74,7 @@ export class LabelControlComponent {
 					});
 				});
 			});
-			if(deleteArrayItem!=''){
+			if(deleteArrayItem.length>0){
 				this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].splice(this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].indexOf(deleteArrayItem), 1)
 				deleteArrayItem='';
 			}

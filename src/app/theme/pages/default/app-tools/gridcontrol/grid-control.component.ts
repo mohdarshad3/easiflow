@@ -31,13 +31,14 @@ export class GridControlComponent {
 	arrLength:number=0;
 	closeResult:String;
 	autoRenderGrid: Array<any> = [];
+	@ViewChild('content') private content;
 	constructor(private modalService: NgbModal,public indexcomponenet: IndexComponent) { }
     ngOnInit() {
     }
     ngAfterViewInit() {
 		this.arrLength=this.indexcomponenet.createNewGrid.length;
 		this.indexcomponenet.createNewGrid[this.arrLength]=[];
-		this.getGridCol(0,this.arrLength);
+		//this.getGridCol(0,this.arrLength);
 		if(this.arrayType=="Grid"){
 			let initRenderId=this.itemRenderId;
 			this.indexcomponenet.itemsGridDropped.forEach(function(item,$index) {
@@ -55,6 +56,11 @@ export class GridControlComponent {
 			});
 		}
     }
+	ngOnChanges(changes: any) {
+		debugger;
+		if(this.arrayType=="Main Grid")
+			this.open(this.content);
+	}
 	open(content) {
 	  this.modalService.open(content).result.then((result) => {
 		this.closeResult = `Closed with: ${result}`;
@@ -80,7 +86,7 @@ export class GridControlComponent {
 					});
 				});
 			});
-			if(deleteArrayItem!=''){
+			if(deleteArrayItem.length>0){
 				this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].splice(this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].indexOf(deleteArrayItem), 1)
 				deleteArrayItem='';
 

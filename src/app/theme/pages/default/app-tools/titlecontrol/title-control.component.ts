@@ -67,12 +67,12 @@ export class TitleControlComponent {
 			this.indexcomponenet.itemsGridDropped.forEach(function(item,$index) {
 				item.forEach(function(item,$index) {
 					item.forEach(function(item,$i) {
-						if(item.itemRenderId=getRenderId)
+						if(item.itemRenderId==getRenderId)
 							deleteArrayItem=item;	
 					});
 				});
 			});
-			if(deleteArrayItem){
+			if(deleteArrayItem.length>0){
 				this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].splice(this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].indexOf(deleteArrayItem), 1)
 			}
 		}
