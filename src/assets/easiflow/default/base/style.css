@@ -762,15 +762,8 @@ paragraph-control p, anchor-control p {
 grid-control div {
     width: 100%;
 }
-::-webkit-input-placeholder { / Chrome/Opera/Safari /
-  color: pink;
-}
-::-moz-placeholder { / Firefox 19+ /
-  color: pink;
-}
-:-ms-input-placeholder { / IE 10+ /
-  color: pink;
-}
-:-moz-placeholder { / Firefox 18- /
-  color: pink;
-}
+.custom-file-label::-webkit-input-placeholder { color: black; }  / WebKit, Blink, Edge /
+.custom-file-label:-moz-placeholder { color: black; }  / Mozilla Firefox 4 to 18 /
+.custom-file-label::-moz-placeholder { color: black; }  / Mozilla Firefox 19+ /
+.custom-file-label:-ms-input-placeholder { color: black; }  / Internet Explorer 10-11 /
+.custom-file-label::-ms-input-placeholder { color: black; }  / Microsoft Edge /

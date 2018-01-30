@@ -33995,7 +33995,7 @@ body.m-content--skin-light2 {
     margin-left: 80px; }
   .m-footer--push.m-aside-left--enabled:not(.m-footer--fixed) .m-aside-right,
   .m-footer--push.m-aside-left--enabled:not(.m-footer--fixed) .m-wrapper {
-    margin-bottom: 60px; } }
+    padding-bottom: 150px; } }
 
 @media (min-width: 993px) and (max-width: 1200px) {
   .m-footer .m-footer__nav .m-nav__item {
