@@ -27,20 +27,20 @@ export class SectionControlComponent {
 	@Input() showElementDelete:boolean;
 	@Input() showelEmentStyle:boolean;
 	@Input() showCustomDiv:boolean;
-	constructor (public indexcomponenet: IndexComponent) {
+	constructor (public indexcomponent: IndexComponent) {
 	}
     ngOnInit($event) {
 		
     }
     ngAfterViewInit() {
 		setTimeout(() => {
-			this.indexcomponenet.globalShowParticularElement(this.itemRenderId,this.arrayType);
+			this.indexcomponent.globalShowParticularElement(this.itemRenderId,this.arrayType);
 		});
     }
 	//remove item from array
 	private removeItem(myitemRenderId,myArrayType){
 		if(myitemRenderId!='' && myArrayType!='')
-			this.indexcomponenet.globalRemoveItem(myitemRenderId,myArrayType);
+			this.indexcomponent.globalRemoveItem(myitemRenderId,myArrayType);
 	}
 	//hide remove dialog item
 	private removeDailog(){
@@ -56,7 +56,7 @@ export class SectionControlComponent {
 	//show custom edit div
 	private showCustomEditDiv(getRenderId,getArrayType){
 		if(getRenderId!='' && getArrayType!='')
-			this.indexcomponenet.globalshowCustomEditDiv(getRenderId,getArrayType);
+			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
 	}
 	//toggle function view property
 	private toggleEmentStyle(){

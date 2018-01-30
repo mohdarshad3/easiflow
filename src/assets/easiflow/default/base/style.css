@@ -510,7 +510,7 @@ ul.grid-templates>li {
 	cursor:pointer;
 	transition: all 0.2s ease-in;
 }
-li.selected-grid {
+li.selectedgrid {
     background-color: #01c2fd;
 }
 

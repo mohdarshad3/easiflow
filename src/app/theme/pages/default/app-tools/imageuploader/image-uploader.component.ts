@@ -37,20 +37,20 @@ export class ImageUploaderComponent {
     loaded: boolean = false;
     imageLoaded: boolean = false;
     imageSrc: string = '';
-	constructor (public indexcomponenet: IndexComponent) {
+	constructor (public indexcomponent: IndexComponent) {
 	}
     ngOnInit($event) {
 		
     }
     ngAfterViewInit() {
 		setTimeout(() => {
-			this.indexcomponenet.globalShowParticularElement(this.itemRenderId,this.arrayType);
+			this.indexcomponent.globalShowParticularElement(this.itemRenderId,this.arrayType);
 		});
     }
 	//remove item from array
 	private removeItem(myitemRenderId,myArrayType){
 		if(myitemRenderId!='' && myArrayType!='')
-			this.indexcomponenet.globalRemoveItem(myitemRenderId,myArrayType);
+			this.indexcomponent.globalRemoveItem(myitemRenderId,myArrayType);
 	}
 	//hide remove dialog item
 	private removeDailog(){
@@ -66,7 +66,7 @@ export class ImageUploaderComponent {
 	//show custom edit div
 	private showCustomEditDiv(getRenderId,getArrayType){
 		if(getRenderId!='' && getArrayType!='')
-			this.indexcomponenet.globalshowCustomEditDiv(getRenderId,getArrayType);
+			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
 	}
 	//toggle function view property
 	private toggleEmentStyle(){

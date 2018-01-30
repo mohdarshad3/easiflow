@@ -29,19 +29,42 @@ export class GridControlComponent {
 	@Input() showelEmentStyle:boolean;
 	@Input() showCustomDiv:boolean;
 	arrLength:number=0;
+	selected :any;
 	closeResult:String;
 	@ViewChild('content') private content;
-	constructor(private modalService: NgbModal,public indexcomponenet: IndexComponent) { }
+	private createGridProperty: Array<Object> = [
+		{
+			imageName: 'grid12.png',
+			Content: '1 Column (12:0)',
+		},
+		{
+			imageName: 'grid66.png',
+			Content: '2 Column (6:6)',
+		},
+		{
+			imageName: 'grid48.png',
+			Content: '2 Column (4:8)',
+		},
+		{
+			imageName: 'grid84.png',
+			Content: '2 Column (8:4)',
+		},
+		{
+			imageName: 'grid444.png',
+			Content: '3 Column (4:4:4)',
+		}
+	];
+	constructor(private modalService: NgbModal,public indexcomponent: IndexComponent) { }
     ngOnInit() {
 		setTimeout(() => {
-			this.arrLength=this.indexcomponenet.createNewGrid.length;
-			this.getGridCol(0,this.arrLength);
+			this.arrLength=this.indexcomponent.createNewGrid.length;
+			this.getGridCol(0,this.arrLength,'');
 			this.open(this.content);
         });
     }
     ngAfterViewInit() {
 		 setTimeout(() => {
-			this.indexcomponenet.globalShowParticularElement(this.itemRenderId,this.arrayType);
+			this.indexcomponent.globalShowParticularElement(this.itemRenderId,this.arrayType);
 		 });
     }
 	open(content) {
@@ -57,7 +80,7 @@ export class GridControlComponent {
 	//remove item from array
 	private removeItem(myitemRenderId,myArrayType){
 		if(myitemRenderId!='' && myArrayType!='')
-			this.indexcomponenet.globalRemoveItem(myitemRenderId,myArrayType);
+			this.indexcomponent.globalRemoveItem(myitemRenderId,myArrayType);
 	}
 	//hide remove dialog item
 	private removeDailog(){
@@ -79,11 +102,11 @@ export class GridControlComponent {
 	//show custom edit div
 	private showCustomEditDiv(getRenderId,getArrayType){
 		if(getRenderId!='' && getArrayType!='')
-			this.indexcomponenet.globalshowCustomEditDiv(getRenderId,getArrayType);
+			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
 	}
 	private addItemToGrid(griditem,$gridArryLength,$gridindex) {
-		if(this.indexcomponenet.itemsGridDropped[$gridArryLength][$gridindex].length==0){
-			this.indexcomponenet.createNewGrid[$gridArryLength].forEach(function(item,$index) {
+		if(this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].length==0){
+			this.indexcomponent.createNewGrid[$gridArryLength].forEach(function(item,$index) {
 				if($index==$gridindex)
 					item.showDemoGridText=false;
 			}); 
@@ -96,40 +119,43 @@ export class GridControlComponent {
 			griditem.showCustomDiv=true;
 			griditem.gridArryLength=$gridArryLength;
 			griditem.gridindex=$gridindex;
-			griditem.itemRenderId=this.indexcomponenet.autoRenderGrid.length+1;
+			griditem.itemRenderId=this.indexcomponent.autoRenderGrid.length+1;
 			
-			this.indexcomponenet.autoRenderGrid.push(griditem.itemRenderId);
-			this.indexcomponenet.itemsGridDropped[$gridArryLength][$gridindex].push(griditem);
+			this.indexcomponent.autoRenderGrid.push(griditem.itemRenderId);
+			this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].push(griditem);
 		}
-		this.indexcomponenet.isRenderEle=true;
+		this.indexcomponent.isRenderEle=true;
     }
-	private getGridCol(colEvent,arrGridLength) {
+	private getGridCol(colEvent,arrGridLength,gridValue) {
 		this.arrLength=arrGridLength;
-		this.indexcomponenet.createNewGrid[arrGridLength]=[];
+		this.indexcomponent.createNewGrid[arrGridLength]=[];
 		switch (colEvent) {
 			case 1:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-6 text-left', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-6 text-left', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
+				this.indexcomponent.createNewGrid[arrGridLength].push({'classname':'col-6 text-left', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-6 text-left', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
 				break;
 			case 2:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
+				this.indexcomponent.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
 				break;
 			case 3:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
+				this.indexcomponent.createNewGrid[arrGridLength].push({'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
 				break;
 			case 4:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':2});
+				this.indexcomponent.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':2});
 				break;
 			default:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-12 text-left', 'demoTitle':'Heading (Grid 12)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0});
+				this.indexcomponent.createNewGrid[arrGridLength].push({'classname':'col-12 text-left', 'demoTitle':'Heading (Grid 12)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0});
 		}
-		
+		this.selected = gridValue; 
 		this.createDynamicArray(colEvent,arrGridLength);
 	}
+	private isSelectedGridProperty(item){
+		return this.selected === item;
+	}
 	public createDynamicArray(count,arrGridLength){
-		this.indexcomponenet.itemsGridDropped[arrGridLength]=[];
+		this.indexcomponent.itemsGridDropped[arrGridLength]=[];
 		for(let i=0;i<=count;i++){
 			let createGridIndexArray=i;
-			this.indexcomponenet.itemsGridDropped[arrGridLength][createGridIndexArray]=[];
+			this.indexcomponent.itemsGridDropped[arrGridLength][createGridIndexArray]=[];
 		}
 	}
 

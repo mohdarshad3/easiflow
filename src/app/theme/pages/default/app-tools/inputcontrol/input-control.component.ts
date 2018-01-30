@@ -27,20 +27,20 @@ export class InputControlComponent {
 	@Input() showelEmentStyle:boolean;
 	@Input() showCustomDiv:boolean;
 	inputValue:String = 'Label Here';
-	constructor (public indexcomponenet: IndexComponent) {
+	constructor (public indexcomponent: IndexComponent) {
 	}
     ngOnInit($event) {
 		this.inputValue = 'Label Here';
     }
     ngAfterViewInit() {
 		setTimeout(() => {
-			this.indexcomponenet.globalShowParticularElement(this.itemRenderId,this.arrayType);
+			this.indexcomponent.globalShowParticularElement(this.itemRenderId,this.arrayType);
 		});
     }
 	//remove item from array
 	private removeItem(myitemRenderId,myArrayType){
 		if(myitemRenderId!='' && myArrayType!='')
-			this.indexcomponenet.globalRemoveItem(myitemRenderId,myArrayType);
+			this.indexcomponent.globalRemoveItem(myitemRenderId,myArrayType);
 	}
 	//hide remove dialog item
 	private removeDailog(){
@@ -62,7 +62,7 @@ export class InputControlComponent {
 	//show custom edit div
 	private showCustomEditDiv(getRenderId,getArrayType){
 		if(getRenderId!='' && getArrayType!='')
-			this.indexcomponenet.globalshowCustomEditDiv(getRenderId,getArrayType);
+			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
 	}
 	private onKey(event) {
 		this.inputValue = event.target.value;
