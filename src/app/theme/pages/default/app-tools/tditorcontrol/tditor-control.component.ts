@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation, Input, Output } from '@angular/co
 import { trigger, style, animate, transition } from '@angular/animations';
 import { IndexComponent } from '../../index/index.component';
 
-
 @Component({
     selector: 'tditor-control',
     templateUrl: './tditor-control.component.html',
@@ -35,62 +34,14 @@ export class TditorControlComponent {
 
     }
     ngAfterViewInit() {
-        this.indexcomponenet.itemsDropped.forEach(function(item) {
-            item.divClass = "";
-            item.showCustomDiv = false;
-        });
-		if(this.arrayType=="Grid"){
-			let initRenderId=this.itemRenderId;
-			this.indexcomponenet.itemsGridDropped.forEach(function(item,$index) {
-				item.forEach(function(item,$index) {
-					item.forEach(function(item,$index) {
-						item.divClass="";
-						item.showCustomDiv=false;
-						if(item.itemRenderId=initRenderId){
-							item.divClass="element-box-contents";
-							item.showCustomDiv=true;
-						}
-							
-					});
-				});
-			});
-		}
-		else{
-			let len = this.indexcomponenet.itemsDropped.length - 1;
-			this.indexcomponenet.itemsDropped[len].divClass = "element-box-contents";
-			this.indexcomponenet.itemsDropped[len].showCustomDiv = true;
-		}
+        setTimeout(() => {
+			this.indexcomponenet.globalShowParticularElement(this.itemRenderId,this.arrayType);
+		});
     }
     //remove item from array
     private removeItem(myitemRenderId,myArrayType) {
-		if(myArrayType=="Grid"){
-			this.showElementDelete=(!this.showElementDelete)?true:false;
-			let getRenderId=myitemRenderId;
-			let deleteArrayItem:Array<any> = [];
-			this.indexcomponenet.itemsGridDropped.forEach(function(item,$index) {
-				item.forEach(function(item,$index) {
-					item.forEach(function(item,$i) {
-						if(item.itemRenderId=getRenderId)
-							deleteArrayItem=item;	
-					});
-				});
-			});
-			if(deleteArrayItem.length>0){
-				this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].splice(this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].indexOf(deleteArrayItem), 1)
-				deleteArrayItem='';
-
-			}
-		}
-		else{
-			this.showElementDelete = (!this.showElementDelete) ? true : false;
-			let getRenderId = myitemRenderId;
-			let a = this.indexcomponenet.itemsDropped.find(item => item.itemRenderId === getRenderId);
-			if (a.itemRenderId == getRenderId) {
-				this.indexcomponenet.itemsDropped.splice(this.indexcomponenet.itemsDropped.indexOf(a), 1);
-				//this.showSelected=(this.indexcomponenet.itemsDropped.length)>0?false:true;
-			}
-		}
-        event.stopPropagation();
+		if(myitemRenderId!='' && myArrayType!='')
+			this.indexcomponenet.globalRemoveItem(myitemRenderId,myArrayType);
     }
     //hide remove dialog item
     private removeDailog() {
@@ -105,29 +56,8 @@ export class TditorControlComponent {
     }
     //show custom edit div
     private showCustomEditDiv(getRenderId,getArrayType) {
-		if(getArrayType=="Grid"){
-			for(let i=0;i<this.indexcomponenet.itemsGridDropped.length;i++){
-				this.indexcomponenet.itemsGridDropped[i].forEach(function(item) {
-					item.divClass="";
-					item.showCustomDiv=false;
-				});
-				let a = this.indexcomponenet.itemsGridDropped[0].find(item => item.itemRenderId === getRenderId);
-				if(a!=undefined){
-					a.divClass="element-box-contents";
-					a.showCustomDiv=true;
-				}
-			}
-		}
-		else{
-			this.indexcomponenet.itemsDropped.forEach(function(item) {
-				item.divClass = "";
-				item.showCustomDiv = false;
-			});
-			let a = this.indexcomponenet.itemsDropped.find(item => item.itemRenderId === getRenderId);
-			a.divClass = "element-box-contents";
-			a.showCustomDiv = true;
-		}
-        event.stopPropagation();
+		if(getRenderId!='' && getArrayType!='')
+			this.indexcomponenet.globalshowCustomEditDiv(getRenderId,getArrayType);
     }
     //toggle function view property
     private toggleEmentStyle() {

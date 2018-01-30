@@ -1,11 +1,11 @@
 <div class="form-group m-form__group row" (click)=showCustomEditDiv(itemRenderId,arrayType);>
  <div class="flex-items">
-	  <div class="form-group m-form__group row">
-		   <label for="exampleInputEmail1">
-			<inline-editor type="text" [(ngModel)]="editableText" name="editableText1" size="8"></inline-editor>
-		   </label>
-		   <input aria-describedby="emailHelp" class="form-control m-input"  placeholder="Click here to edit input">
-	  </div>
+	<div class="form-group m-form__group row">
+		<label for="exampleInputEmail1">
+		{{inputValue}}
+		</label>
+		<input class="form-control m-input" placeholder="Enter the text here" type="text">
+   </div>
  </div>
 </div>
 <div class="elementOptions" *ngIf="showCustomDiv">
@@ -19,17 +19,23 @@
 			<button type="button" class="btn deleteBtn" (click)="removeItem(itemRenderId,arrayType)">Yes</button>
 	   </div>
 	    <div class="editInputStyle easyDropdown" *ngIf="showelEmentStyle" [@enterAnimation] aria-labelledby="dropdownBasic1">
-            <ul class="inputEditNav">
+            <ul class="inputEditNav" (click)="stillPop()">
 				 <li class="m-nav__section--first">
 					<span class="m-nav__section-text m-form__group form-group row">
-						<span class="m-nav__link-text">Required</span>
-						<span class="m-switch m-switch--icon m-switch--accent">
-							<label>
-								<input checked="checked" name="" type="checkbox">
-								<span></span>
-							</label>
-						</span>
+						<label for="exampleInputEmail1">Label Text</label>
+						<input (keyup)="onKey($event)" class="form-control m-input" placeholder="{{inputValue}}" type="text">
 					</span>
+				 </li>
+				 <li class="m-nav__item">
+					  <span class="m-nav__section-text m-form__group form-group row">
+							<span class="m-nav__link-text">Required</span>
+							<span class="m-switch m-switch--icon m-switch--accent">
+								<label>
+									<input checked="checked" name="" type="checkbox">
+									<span></span>
+								</label>
+							</span>
+					  </span>
 				 </li>
 				 <li class="m-nav__item">
 					<a class="m-nav__link  m-form__group form-group row" href="" ng-reflect-href="">

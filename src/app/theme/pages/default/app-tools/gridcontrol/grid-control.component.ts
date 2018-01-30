@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation,Input, Output,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation,Input, Output,ViewChild ,ChangeDetectorRef} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { trigger, style, animate, transition } from '@angular/animations';
 import {IndexComponent} from '../../index/index.component';
@@ -30,77 +30,34 @@ export class GridControlComponent {
 	@Input() showCustomDiv:boolean;
 	arrLength:number=0;
 	closeResult:String;
-	autoRenderGrid: Array<any> = [];
 	@ViewChild('content') private content;
 	constructor(private modalService: NgbModal,public indexcomponenet: IndexComponent) { }
     ngOnInit() {
+		setTimeout(() => {
+			this.arrLength=this.indexcomponenet.createNewGrid.length;
+			this.getGridCol(0,this.arrLength);
+			this.open(this.content);
+        });
     }
     ngAfterViewInit() {
-		this.arrLength=this.indexcomponenet.createNewGrid.length;
-		this.indexcomponenet.createNewGrid[this.arrLength]=[];
-		//this.getGridCol(0,this.arrLength);
-		if(this.arrayType=="Grid"){
-			let initRenderId=this.itemRenderId;
-			this.indexcomponenet.itemsGridDropped.forEach(function(item,$index) {
-				item.forEach(function(item,$index) {
-					item.forEach(function(item,$index) {
-						item.divClass="";
-						item.showCustomDiv=false;
-						if(item.itemRenderId=initRenderId){
-							item.divClass="element-box-contents";
-							item.showCustomDiv=true;
-						}
-							
-					});
-				});
-			});
-		}
+		 setTimeout(() => {
+			this.indexcomponenet.globalShowParticularElement(this.itemRenderId,this.arrayType);
+		 });
     }
-	ngOnChanges(changes: any) {
-		debugger;
-		if(this.arrayType=="Main Grid")
-			this.open(this.content);
-	}
 	open(content) {
 	  this.modalService.open(content).result.then((result) => {
 		this.closeResult = `Closed with: ${result}`;
 	  }, (reason) => {
 		this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 	  });
-	  event.stopPropagation();
 	}
 	private getDismissReason(reason: any): string {
 		return (reason === ModalDismissReasons.ESC)? 'by pressing ESC' : (reason === ModalDismissReasons.BACKDROP_CLICK) ? 'by clicking on a backdrop':`with: ${reason}`;
 	}
 	//remove item from array
 	private removeItem(myitemRenderId,myArrayType){
-		if(myArrayType=="Grid"){
-			this.showElementDelete=(!this.showElementDelete)?true:false;
-			let getRenderId=myitemRenderId;
-			let deleteArrayItem:Array<any> = [];
-			this.indexcomponenet.itemsGridDropped.forEach(function(item,$index) {
-				item.forEach(function(item,$index) {
-					item.forEach(function(item,$i) {
-						if(item.itemRenderId=getRenderId)
-							deleteArrayItem=item;	
-					});
-				});
-			});
-			if(deleteArrayItem.length>0){
-				this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].splice(this.indexcomponenet.itemsGridDropped[deleteArrayItem.gridArryLength][deleteArrayItem.gridindex].indexOf(deleteArrayItem), 1)
-				deleteArrayItem='';
-
-			}
-		}
-		else{
-			this.showElementDelete=(!this.showElementDelete)?true:false;
-			let getRenderId=myitemRenderId;
-			let a = this.indexcomponenet.itemsDropped.find(item => item.itemRenderId === getRenderId);
-			if(a.itemRenderId==getRenderId){
-				this.indexcomponenet.itemsDropped.splice(this.indexcomponenet.itemsDropped.indexOf(a), 1);
-			}
-		}
-		event.stopPropagation();
+		if(myitemRenderId!='' && myArrayType!='')
+			this.indexcomponenet.globalRemoveItem(myitemRenderId,myArrayType);
 	}
 	//hide remove dialog item
 	private removeDailog(){
@@ -121,70 +78,51 @@ export class GridControlComponent {
 	}
 	//show custom edit div
 	private showCustomEditDiv(getRenderId,getArrayType){
-		if(getArrayType=="Grid"){
-			for(let i=0;i<this.indexcomponenet.itemsGridDropped.length;i++){
-				this.indexcomponenet.itemsGridDropped[i].forEach(function(item) {
-					item.divClass="";
-					item.showCustomDiv=false;
-				});
-				let a = this.indexcomponenet.itemsGridDropped[0].find(item => item.itemRenderId === getRenderId);
-				if(a!=undefined){
-					a.divClass="element-box-contents";
-					a.showCustomDiv=true;
-				}
-			}
-		}
-		else{
-			this.indexcomponenet.itemsDropped.forEach(function(item) {
-				item.divClass="";
-				item.showCustomDiv=false;
-			});
-			let a = this.indexcomponenet.itemsDropped.find(item => item.itemRenderId === getRenderId);
-			a.divClass="element-box-contents";
-			a.showCustomDiv=true;
-		}
-		event.stopPropagation();
+		if(getRenderId!='' && getArrayType!='')
+			this.indexcomponenet.globalshowCustomEditDiv(getRenderId,getArrayType);
 	}
 	private addItemToGrid(griditem,$gridArryLength,$gridindex) {
-		this.indexcomponenet.createNewGrid[$gridArryLength].forEach(function(item) {
-			item.showDemoGridText=false;
-		});
+		if(this.indexcomponenet.itemsGridDropped[$gridArryLength][$gridindex].length==0){
+			this.indexcomponenet.createNewGrid[$gridArryLength].forEach(function(item,$index) {
+				if($index==$gridindex)
+					item.showDemoGridText=false;
+			}); 
+		} 
 		if(griditem.renderid==undefined){
-			this.indexcomponenet.itemsGridDropped.forEach(function(item) {
-				item.showCustomDiv=false;
-			});
 			griditem.showBasicControl=(griditem.content != 'dividercontrol' && griditem.content != 'gridcontrol' && griditem.content != 'sectioncontrol' && griditem.content != 'spacercontrol' && griditem.content != 'fileattachmentcontrol'  && griditem.content != 'embedvidcontrol')?true:false;
 			griditem.arrayType="Grid";
-			griditem.showCustomDiv=true;
-			griditem.divClass="element-box-contents";
+			griditem.divClass=(griditem.content=='sectioncontrol' || griditem.content=='gridcontrol')? "element-box-contents-for-stracture" :(griditem.content=='dividercontrol')?"element-box-contents-for-divider":(griditem.content=='spacercontrol')?"element-box-contents-for-spacer":"element-box-contents";
 			griditem.showElementDelete=griditem.showelEmentStyle=false;
 			griditem.showCustomDiv=true;
 			griditem.gridArryLength=$gridArryLength;
 			griditem.gridindex=$gridindex;
-			griditem.itemRenderId=this.autoRenderGrid.length+1;
+			griditem.itemRenderId=this.indexcomponenet.autoRenderGrid.length+1;
 			
-			this.autoRenderGrid.push(griditem.itemRenderId);
+			this.indexcomponenet.autoRenderGrid.push(griditem.itemRenderId);
 			this.indexcomponenet.itemsGridDropped[$gridArryLength][$gridindex].push(griditem);
 		}
-		$("div.highlight").removeClass();
-		event.stopPropagation(); 
+		this.indexcomponenet.isRenderEle=true;
     }
 	private getGridCol(colEvent,arrGridLength) {
 		this.arrLength=arrGridLength;
 		this.indexcomponenet.createNewGrid[arrGridLength]=[];
 		switch (colEvent) {
 			case 1:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-6', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength},{'classname':'col-6', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength});
+				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-6 text-left', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-6 text-left', 'demoTitle':'Heading (Grid 6)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
 				break;
 			case 2:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength},{'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength});
+				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
 				break;
 			case 3:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength});
+				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-8', 'demoTitle':'Heading (Grid 8)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1});
+				break;
+			case 4:
+				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':1},{'classname':'col-4', 'demoTitle':'Heading (Grid 4)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':2});
 				break;
 			default:
-				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-12', 'demoTitle':'Heading (Grid 12)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength});
+				this.indexcomponenet.createNewGrid[arrGridLength].push({'classname':'col-12 text-left', 'demoTitle':'Heading (Grid 12)', 'demoPara': 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.','showDemoGridText':true,'arrGridLength':arrGridLength,'itemIndex':0});
 		}
+		
 		this.createDynamicArray(colEvent,arrGridLength);
 	}
 	public createDynamicArray(count,arrGridLength){

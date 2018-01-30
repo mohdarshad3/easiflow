@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HrefPreventDefaultDirective } from '../../_directives/href-prevent-default.directive';
 import { UnwrapTagDirective } from '../../_directives/unwrap-tag.directive';
-
 import { DragDropDirectiveModule } from "angular4-drag-drop";
 
 @NgModule({

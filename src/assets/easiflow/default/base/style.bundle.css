@@ -3659,7 +3659,7 @@ button.close {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 615px;
+    max-width: 800px;
     margin: 30px auto;
 }
   .modal-sm {

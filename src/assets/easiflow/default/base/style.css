@@ -305,7 +305,7 @@
     position: relative;
     text-align: center;
     padding: 20px 0;
-    z-index: 1;
+    z-index: auto;
 }
 
 .elementOptions {
@@ -314,7 +314,10 @@
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: 2;
+}
+ul.inputEditNav>li.m-nav__section--first > span {
+    margin-bottom: 15px;
 }
 
 .formControlrs>button:hover {
@@ -755,4 +758,19 @@ paragraph-control p, anchor-control p {
 .ui-dialog .ui-dialog-titlebar-close span {
     display: block;
     margin: 0;
+}
+grid-control div {
+    width: 100%;
+}
+::-webkit-input-placeholder { / Chrome/Opera/Safari /
+  color: pink;
+}
+::-moz-placeholder { / Firefox 19+ /
+  color: pink;
+}
+:-ms-input-placeholder { / IE 10+ /
+  color: pink;
+}
+:-moz-placeholder { / Firefox 18- /
+  color: pink;
 }
