@@ -112,7 +112,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 		if(deleteArrayItem.length>0){
 			this.itemsGridDropped[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].splice(this.itemsGridDropped[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].indexOf(deleteArrayItem[0]), 1);
 			
-			if(this.itemsGridDropped[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].length===0)
+			if(this.itemsGridDropped[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].length===1)
 				this.createNewGrid[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].showDemoGridText=true;
 			
 			deleteArrayItem=[];

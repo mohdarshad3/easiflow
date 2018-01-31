@@ -164,6 +164,6 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         console.log('Begining to drag item: ' + item);
     }
     private releaseDrop(event) {
-
+		
     }
 }

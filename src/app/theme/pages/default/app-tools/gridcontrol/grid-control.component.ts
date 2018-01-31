@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation,Input, Output,ViewChild ,ChangeDet
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { trigger, style, animate, transition } from '@angular/animations';
 import {IndexComponent} from '../../index/index.component';
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 @Component({
     selector: 'grid-control',
     templateUrl: './grid-control.component.html',
@@ -54,12 +55,39 @@ export class GridControlComponent {
 			Content: '3 Column (4:4:4)',
 		}
 	];
-	constructor(private modalService: NgbModal,public indexcomponent: IndexComponent) { }
+	constructor(private modalService: NgbModal,public indexcomponent: IndexComponent,private dragula: DragulaService) {
+	}
     ngOnInit() {
 		setTimeout(() => {
 			this.arrLength=this.indexcomponent.createNewGrid.length;
 			this.getGridCol(0,this.arrLength,'');
 			this.open(this.content);
+			let findCreateArray:Array<any>=this.indexcomponent.itemsGridDropped;
+			this.dragula.dropModel.subscribe((value) => {
+				let checkAarryVal=false;
+				this.indexcomponent.createNewGrid.forEach(function(rowItem,$mindex) {
+					rowItem.forEach(function(chritem,$chindex){
+						checkAarryVal=false
+						findCreateArray[$mindex][$chindex].forEach(function(chitem,$gindex){
+							if(!checkAarryVal){
+								if(findCreateArray[$mindex][$chindex].length==1){
+									if(!checkAarryVal){
+										chritem.showDemoGridText=true;
+										checkAarryVal=true;
+									}
+								}
+								else if(findCreateArray[$mindex][$chindex].length>1){
+									if(!checkAarryVal){
+										chritem.showDemoGridText=false;
+										checkAarryVal=true;
+									}											
+								}
+							}
+						});
+					});
+				});
+				checkAarryVal=false;
+			});
         });
     }
     ngAfterViewInit() {
@@ -105,7 +133,8 @@ export class GridControlComponent {
 			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
 	}
 	private addItemToGrid(griditem,$gridArryLength,$gridindex) {
-		if(this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].length==0){
+		debugger;
+		if(this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].length==1){
 			this.indexcomponent.createNewGrid[$gridArryLength].forEach(function(item,$index) {
 				if($index==$gridindex)
 					item.showDemoGridText=false;
@@ -156,7 +185,15 @@ export class GridControlComponent {
 		for(let i=0;i<=count;i++){
 			let createGridIndexArray=i;
 			this.indexcomponent.itemsGridDropped[arrGridLength][createGridIndexArray]=[];
+			this.indexcomponent.itemsGridDropped[arrGridLength][createGridIndexArray].push({
+				initEmptyArry: ''
+			});
 		}
 	}
+	//release drop position
+    private releaseDrop(event: MouseEvent) {
+		debugger;
+		console.log('Release to drag item:');
+    }
 
 }
