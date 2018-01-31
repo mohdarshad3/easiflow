@@ -37,28 +37,28 @@ export class DTPControlComponent {
         });
     }
     //remove item from array
-    private removeItem(myitemRenderId, myArrayType) {
+    public removeItem(myitemRenderId, myArrayType) {
         if (myitemRenderId != '' && myArrayType != '')
             this.indexcomponent.globalRemoveItem(myitemRenderId, myArrayType);
     }
     //hide remove dialog item
-    private removeDailog() {
+    public removeDailog() {
         this.showelEmentStyle = false;
         this.showElementDelete = (!this.showElementDelete) ? true : false;
         event.stopPropagation();
     }
     //hide remove item
-    private hideRemoveItem() {
+    public hideRemoveItem() {
         this.showElementDelete = false;
         event.stopPropagation();
     }
     //show custom edit div
-    private showCustomEditDiv(getRenderId, getArrayType) {
+    public showCustomEditDiv(getRenderId, getArrayType) {
         if (getRenderId != '' && getArrayType != '')
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
     }
     //toggle function view property
-    private toggleEmentStyle() {
+    public toggleEmentStyle() {
         event.stopPropagation();
     }
 

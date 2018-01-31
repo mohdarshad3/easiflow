@@ -39,39 +39,39 @@ export class InputControlComponent {
         });
     }
     //remove item from array
-    private removeItem(myitemRenderId, myArrayType) {
+    public removeItem(myitemRenderId, myArrayType) {
         if (myitemRenderId != '' && myArrayType != '')
             this.indexcomponent.globalRemoveItem(myitemRenderId, myArrayType);
     }
     //hide remove dialog item
-    private removeDailog() {
+    public removeDailog() {
         this.showelEmentStyle = false;
         this.showElementDelete = (!this.showElementDelete) ? true : false;
         event.stopPropagation();
     }
     //hide remove item
-    private hideRemoveItem() {
+    public hideRemoveItem() {
         this.showElementDelete = false;
         event.stopPropagation();
     }
     //show toogle element
-    private toggleEmentStyle() {
+    public toggleEmentStyle() {
         this.showElementDelete = false;
         this.showelEmentStyle = (!this.showelEmentStyle) ? true : false;
         event.stopPropagation();
     }
     //show custom edit div
-    private showCustomEditDiv(getRenderId, getArrayType) {
+    public showCustomEditDiv(getRenderId, getArrayType) {
         if (getRenderId != '' && getArrayType != '') {
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
             this.showelEmentStyle = true;
         }
     }
-    private onKey(event) {
+    public onKey(event) {
         this.inputValue = event.target.value;
         event.stopPropagation();
     }
-    private stillPop() {
+    public stillPop() {
         this.showelEmentStyle = true;
         event.stopPropagation();
     }

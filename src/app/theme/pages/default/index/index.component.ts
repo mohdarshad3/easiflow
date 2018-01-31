@@ -47,7 +47,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
             ['assets/app/js/dashboard.js']);
     }
     //push drag element in to array
-    private addDropItem(event) {
+    public addDropItem(event) {
         if (!this.isRenderEle) {
             if (event.itemRenderId == undefined) {
                 event.showBasicControl = (event.content != 'dividercontrol' && event.content != 'gridcontrol' && event.content != 'sectioncontrol' && event.content != 'spacercontrol' && event.content != 'fileattachmentcontrol' && event.content != 'embedvidcontrol') ? true : false;
@@ -66,7 +66,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this.isRenderEle = false;
     }
     //hide custome edit div
-    private hideCustomEditDiv(item) {
+    public hideCustomEditDiv(item) {
         this.itemsDropped.forEach(function(item) {
             item.divClass = "";
             item.showCustomDiv = item.showElementDelete = item.showelEmentStyle = false;
@@ -83,15 +83,15 @@ export class IndexComponent implements OnInit, AfterViewInit {
         }
     }
     //start drag element
-    private startDrag(item) {
+    public startDrag(item) {
         console.log('Begining to drag item: ' + item);
     }
     //release drop position
-    private releaseDrop(event: MouseEvent) {
+    public releaseDrop(event: MouseEvent) {
         console.log('Release to drag item:');
     }
     //Delete Grid Item
-    private deleteGridItem(myitemRenderId) {
+    public deleteGridItem(myitemRenderId) {
         let check = false;
         let getRenderId = myitemRenderId;
         let deleteArrayItem: Array<any> = [];
@@ -120,7 +120,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         }
         return check;
     }
-    private deleteMainItem(myitemRenderId) {
+    public deleteMainItem(myitemRenderId) {
         let check = false;
         let getRenderId = myitemRenderId;
         let a = this.itemsDropped.find(item => item.itemRenderId === getRenderId);
@@ -183,7 +183,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         catch (e) {
         }
     }
-    private showGridItem(getRenderId) {
+    public showGridItem(getRenderId) {
         let check = false;
         this.itemsGridDropped.forEach(function(item, $index) {
             item.forEach(function(item, $index) {
@@ -200,7 +200,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         });
         return check;
     }
-    private showMainItem(getRenderId) {
+    public showMainItem(getRenderId) {
         let check = false;
         this.itemsDropped.forEach(function(item) {
             item.divClass = "";

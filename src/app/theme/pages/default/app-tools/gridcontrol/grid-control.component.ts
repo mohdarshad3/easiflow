@@ -33,7 +33,7 @@ export class GridControlComponent {
     selected: any;
     closeResult: String;
     @ViewChild('content') private content;
-    private createGridProperty: Array<Object> = [
+    public createGridProperty: Array<Object> = [
         {
             imageName: 'grid12.png',
             Content: '1 Column (12:0)',
@@ -102,38 +102,37 @@ export class GridControlComponent {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
     }
-    private getDismissReason(reason: any): string {
+    public getDismissReason(reason: any): string {
         return (reason === ModalDismissReasons.ESC) ? 'by pressing ESC' : (reason === ModalDismissReasons.BACKDROP_CLICK) ? 'by clicking on a backdrop' : `with: ${reason}`;
     }
     //remove item from array
-    private removeItem(myitemRenderId, myArrayType) {
+    public removeItem(myitemRenderId, myArrayType) {
         if (myitemRenderId != '' && myArrayType != '')
             this.indexcomponent.globalRemoveItem(myitemRenderId, myArrayType);
     }
     //hide remove dialog item
-    private removeDailog() {
+    public removeDailog() {
         this.showelEmentStyle = false;
         this.showElementDelete = (!this.showElementDelete) ? true : false;
         event.stopPropagation();
     }
     //hide remove item
-    private hideRemoveItem() {
+    public hideRemoveItem() {
         this.showElementDelete = false;
         event.stopPropagation();
     }
     //show toogle element
-    private toggleEmentStyle() {
+    public toggleEmentStyle() {
         this.showElementDelete = false;
         this.showelEmentStyle = (!this.showelEmentStyle) ? true : false;
         event.stopPropagation();
     }
     //show custom edit div
-    private showCustomEditDiv(getRenderId, getArrayType) {
+    public showCustomEditDiv(getRenderId, getArrayType) {
         if (getRenderId != '' && getArrayType != '')
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
     }
-    private addItemToGrid(griditem, $gridArryLength, $gridindex) {
-        debugger;
+    public addItemToGrid(griditem, $gridArryLength, $gridindex) {
         if (this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].length == 1) {
             this.indexcomponent.createNewGrid[$gridArryLength].forEach(function(item, $index) {
                 if ($index == $gridindex)
@@ -155,7 +154,7 @@ export class GridControlComponent {
         }
         this.indexcomponent.isRenderEle = true;
     }
-    private getGridCol(colEvent, arrGridLength, gridValue) {
+    public getGridCol(colEvent, arrGridLength, gridValue) {
         this.arrLength = arrGridLength;
         this.indexcomponent.createNewGrid[arrGridLength] = [];
         switch (colEvent) {
@@ -177,7 +176,7 @@ export class GridControlComponent {
         this.selected = gridValue;
         this.createDynamicArray(colEvent, arrGridLength);
     }
-    private isSelectedGridProperty(item) {
+    public isSelectedGridProperty(item) {
         return this.selected === item;
     }
     public createDynamicArray(count, arrGridLength) {
@@ -191,8 +190,7 @@ export class GridControlComponent {
         }
     }
     //release drop position
-    private releaseDrop(event: MouseEvent) {
-        debugger;
+    public releaseDrop(event: MouseEvent) {
         console.log('Release to drag item:');
     }
 

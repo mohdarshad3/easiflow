@@ -10,7 +10,7 @@ declare let mLayout: any;
 })
 export class AsideNavComponent implements OnInit, AfterViewInit {
     dropItemType: any;
-    private itemsControlToDrop: Array<Object> = [
+    public itemsControlToDrop: Array<Object> = [
         {
             name: 'Title',
             iconClass: 'm-menu__link-icon flaticon-type',
@@ -109,7 +109,7 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         }
 
     ];
-    private itemsStractureToDrop: Array<Object> = [
+    public itemsStractureToDrop: Array<Object> = [
         {
             name: 'Section',
             iconClass: 'm-menu__link-icon flaticon-layout',
@@ -136,7 +136,7 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         },
 
     ];
-    private itemsMediaToDrop: Array<Object> = [
+    public itemsMediaToDrop: Array<Object> = [
         {
             name: 'File Attachment',
             iconClass: 'm-menu__link-icon flaticon-layout',
@@ -160,10 +160,10 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         mLayout.initAside();
     }
-    private startDrag(item) {
+    public startDrag(item) {
         console.log('Begining to drag item: ' + item);
     }
-    private releaseDrop(event) {
+    public releaseDrop(event) {
 
     }
 }
