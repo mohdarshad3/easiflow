@@ -2,12 +2,9 @@
     "name": "default",
     "version": "0.0.1",
     "license": "MIT",
-	"engines": {
-		"node": "6.11.1"
-	},
     "scripts": {
         "ng": "ng",
-        "start": "http-server dist/",
+        "start": "ng serve",
         "build": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
@@ -44,9 +41,7 @@
         "rxjs": "^5.5.2",
         "summernote": "^0.8.9",
         "typescript-formatter": "^5.2.0",
-		"typescript": "~2.4.2",
         "zone.js": "^0.8.14"
-		
     },
     "devDependencies": {
         "@angular/cli": "1.6.2",
