@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation,Input,Output } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { IndexComponent } from '../../index/index.component';
 @Component({
@@ -6,28 +6,28 @@ import { IndexComponent } from '../../index/index.component';
     templateUrl: './image-uploader.component.html',
     styleUrls: ['./image-uploader.component.css'],
     inputs: ['activeColor', 'baseColor', 'overlayColor', 'iconColor', 'borderColor'],
-	animations: [
-		trigger(
-		  'enterAnimation', [
-			transition(':enter', [
-			  style({opacity: 0}),
-			  animate('250ms', style({opacity: 1}))
-			]),
-			transition(':leave', [
-			  style({opacity: 1}),
-			  animate('250ms', style({opacity: 0}))
-			])
-		  ]
-		)
-	],
+    animations: [
+        trigger(
+            'enterAnimation', [
+                transition(':enter', [
+                    style({ opacity: 0 }),
+                    animate('250ms', style({ opacity: 1 }))
+                ]),
+                transition(':leave', [
+                    style({ opacity: 1 }),
+                    animate('250ms', style({ opacity: 0 }))
+                ])
+            ]
+        )
+    ],
 })
 export class ImageUploaderComponent {
-	//initialize variable
-	@Input() arrayType:String;
-	@Input() itemRenderId: number;
-	@Input() showElementDelete:boolean;
-	@Input() showelEmentStyle:boolean;
-	@Input() showCustomDiv:boolean;
+    //initialize variable
+    @Input() arrayType: String;
+    @Input() itemRenderId: number;
+    @Input() showElementDelete: boolean;
+    @Input() showelEmentStyle: boolean;
+    @Input() showCustomDiv: boolean;
     iconColor: string;
     borderColor: string;
     activeColor: string = 'green';
@@ -37,41 +37,41 @@ export class ImageUploaderComponent {
     loaded: boolean = false;
     imageLoaded: boolean = false;
     imageSrc: string = '';
-	constructor (public indexcomponent: IndexComponent) {
-	}
+    constructor(public indexcomponent: IndexComponent) {
+    }
     ngOnInit($event) {
-		
+
     }
     ngAfterViewInit() {
-		setTimeout(() => {
-			this.indexcomponent.globalShowParticularElement(this.itemRenderId,this.arrayType);
-		});
+        setTimeout(() => {
+            this.indexcomponent.globalShowParticularElement(this.itemRenderId, this.arrayType);
+        });
     }
-	//remove item from array
-	private removeItem(myitemRenderId,myArrayType){
-		if(myitemRenderId!='' && myArrayType!='')
-			this.indexcomponent.globalRemoveItem(myitemRenderId,myArrayType);
-	}
-	//hide remove dialog item
-	private removeDailog(){
-		this.showelEmentStyle=false;
-		this.showElementDelete=(!this.showElementDelete)?true:false;
-		event.stopPropagation();
-	}
-	//hide remove item
-	private hideRemoveItem(){
-		this.showElementDelete=false;
-		event.stopPropagation();
-	}
-	//show custom edit div
-	private showCustomEditDiv(getRenderId,getArrayType){
-		if(getRenderId!='' && getArrayType!='')
-			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
-	}
-	//toggle function view property
-	private toggleEmentStyle(){
-		event.stopPropagation();
-	}
+    //remove item from array
+    private removeItem(myitemRenderId, myArrayType) {
+        if (myitemRenderId != '' && myArrayType != '')
+            this.indexcomponent.globalRemoveItem(myitemRenderId, myArrayType);
+    }
+    //hide remove dialog item
+    private removeDailog() {
+        this.showelEmentStyle = false;
+        this.showElementDelete = (!this.showElementDelete) ? true : false;
+        event.stopPropagation();
+    }
+    //hide remove item
+    private hideRemoveItem() {
+        this.showElementDelete = false;
+        event.stopPropagation();
+    }
+    //show custom edit div
+    private showCustomEditDiv(getRenderId, getArrayType) {
+        if (getRenderId != '' && getArrayType != '')
+            this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
+    }
+    //toggle function view property
+    private toggleEmentStyle() {
+        event.stopPropagation();
+    }
     handleDragEnter() {
         this.dragging = true;
     }

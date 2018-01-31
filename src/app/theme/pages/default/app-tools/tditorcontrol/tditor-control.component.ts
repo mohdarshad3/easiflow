@@ -22,12 +22,12 @@ import { IndexComponent } from '../../index/index.component';
 })
 export class TditorControlComponent {
     //initialize variable
-	@Input() arrayType:String;
+    @Input() arrayType: String;
     @Input() itemRenderId: number;
     @Input() showElementDelete: boolean;
     @Input() showelEmentStyle: boolean;
     @Input() showCustomDiv: boolean;
-	text: string;
+    text: string;
     constructor(public indexcomponent: IndexComponent) {
     }
     ngOnInit($event) {
@@ -35,13 +35,13 @@ export class TditorControlComponent {
     }
     ngAfterViewInit() {
         setTimeout(() => {
-			this.indexcomponent.globalShowParticularElement(this.itemRenderId,this.arrayType);
-		});
+            this.indexcomponent.globalShowParticularElement(this.itemRenderId, this.arrayType);
+        });
     }
     //remove item from array
-    private removeItem(myitemRenderId,myArrayType) {
-		if(myitemRenderId!='' && myArrayType!='')
-			this.indexcomponent.globalRemoveItem(myitemRenderId,myArrayType);
+    private removeItem(myitemRenderId, myArrayType) {
+        if (myitemRenderId != '' && myArrayType != '')
+            this.indexcomponent.globalRemoveItem(myitemRenderId, myArrayType);
     }
     //hide remove dialog item
     private removeDailog() {
@@ -55,9 +55,9 @@ export class TditorControlComponent {
         event.stopPropagation();
     }
     //show custom edit div
-    private showCustomEditDiv(getRenderId,getArrayType) {
-		if(getRenderId!='' && getArrayType!='')
-			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
+    private showCustomEditDiv(getRenderId, getArrayType) {
+        if (getRenderId != '' && getArrayType != '')
+            this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
     }
     //toggle function view property
     private toggleEmentStyle() {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragDropDirectiveModule} from "angular4-drag-drop";
+import { DragDropDirectiveModule } from "angular4-drag-drop";
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index.component';
@@ -29,9 +29,9 @@ import { SectionControlComponent } from '../app-tools/sectioncontrol/section-con
 import { SpacerControlComponent } from '../app-tools/spacercontrol/spacer-control.component';
 import { FileattAchmentControlComponent } from '../app-tools/fileattachmentcontrol/fileattachment-control.component';
 import { EmbedVidControlComponent } from '../app-tools/embedvidcontrol/embedvid-control.component';
-import {InlineEditorModule} from '@qontu/ngx-inline-editor';
-import { FormsModule }   from '@angular/forms';
-import {EditorModule} from 'primeng/components/editor/editor';
+import { InlineEditorModule } from '@qontu/ngx-inline-editor';
+import { FormsModule } from '@angular/forms';
+import { EditorModule } from 'primeng/components/editor/editor';
 
 
 const routes: Routes = [
@@ -49,36 +49,36 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), LayoutModule,DragDropDirectiveModule,DragulaModule,InlineEditorModule,FormsModule, EditorModule,NgbModule.forRoot()
+        CommonModule, RouterModule.forChild(routes), LayoutModule, DragDropDirectiveModule, DragulaModule, InlineEditorModule, FormsModule, EditorModule, NgbModule.forRoot()
     ], exports: [
         RouterModule
     ], declarations: [
         IndexComponent,
-		InputControlComponent,
-		TitleControlComponent,
-		CheckboxControlComponent,
-		LabelControlComponent,
-		DTCControlComponent,
-		DTPControlComponent,
-		ButtonControlComponent,
-		DropdownControlComponent,
-		TditorControlComponent,
-		ModalControlComponent,
-		RadioControlComponent,
-		ImageUploaderComponent,
-		FormControlComponent,
-		ParagraphControlComponent,
-		AnchorControlComponent,
-		TabsControlComponent,
-		GridControlComponent,
-		DividerControlComponent,
-		SectionControlComponent,
-		SpacerControlComponent,
-		FileattAchmentControlComponent,
-		EmbedVidControlComponent
-		
+        InputControlComponent,
+        TitleControlComponent,
+        CheckboxControlComponent,
+        LabelControlComponent,
+        DTCControlComponent,
+        DTPControlComponent,
+        ButtonControlComponent,
+        DropdownControlComponent,
+        TditorControlComponent,
+        ModalControlComponent,
+        RadioControlComponent,
+        ImageUploaderComponent,
+        FormControlComponent,
+        ParagraphControlComponent,
+        AnchorControlComponent,
+        TabsControlComponent,
+        GridControlComponent,
+        DividerControlComponent,
+        SectionControlComponent,
+        SpacerControlComponent,
+        FileattAchmentControlComponent,
+        EmbedVidControlComponent
+
     ]
 })
 export class IndexModule {
-	
+
 }

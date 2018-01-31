@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation,Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Helpers } from '../../../helpers';
 import { ScriptLoaderService } from '../../../_services/script-loader.service';
 

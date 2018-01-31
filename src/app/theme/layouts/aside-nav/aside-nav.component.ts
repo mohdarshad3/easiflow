@@ -136,7 +136,7 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         },
 
     ];
-	private itemsMediaToDrop: Array<Object> = [
+    private itemsMediaToDrop: Array<Object> = [
         {
             name: 'File Attachment',
             iconClass: 'm-menu__link-icon flaticon-layout',
@@ -164,6 +164,6 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
         console.log('Begining to drag item: ' + item);
     }
     private releaseDrop(event) {
-		
+
     }
 }
