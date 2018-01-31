@@ -111,9 +111,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
 		});
 		if(deleteArrayItem.length>0){
 			this.itemsGridDropped[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].splice(this.itemsGridDropped[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].indexOf(deleteArrayItem[0]), 1);
+			
+			if(this.itemsGridDropped[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].length===0)
+				this.createNewGrid[deleteArrayItem[0].mainGridindex][deleteArrayItem[0].gridArryLength].showDemoGridText=true;
+			
 			deleteArrayItem=[];
 			check=true;
-			 
 		}
 		return check;
 	}
@@ -142,6 +145,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
 				if(!getResponse)
 					this.deleteGridItem(myitemRenderId)
 			}
+			if(this.itemsDropped.length===0)
+				this.showSelected=true;
 		}
 		catch(e){
 		}

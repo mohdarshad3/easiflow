@@ -28,9 +28,11 @@ export class FileattAchmentControlComponent {
 	@Input() showElementDelete:boolean;
 	@Input() showelEmentStyle:boolean;
 	@Input() showCustomDiv:boolean;
+	fileName:any;
 	constructor (public indexcomponent: IndexComponent) {
 	}
     ngOnInit($event) {
+		this.fileName='Choose file';
     }
     ngAfterViewInit() {
 		setTimeout(() => {
@@ -62,8 +64,9 @@ export class FileattAchmentControlComponent {
 	private toggleEmentStyle(){
 		event.stopPropagation();
 	}
-	/* private onFileChange(event) { 
+	private onFileChange(event) {
+		debugger;
 		this.fileName = event.target.files[0].name;
 		event.stopPropagation();
-	} */
+	}
 }

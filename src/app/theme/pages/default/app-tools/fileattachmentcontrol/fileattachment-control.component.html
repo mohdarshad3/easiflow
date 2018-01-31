@@ -1,10 +1,10 @@
-<div class="col-12" (click)=showCustomEditDiv(itemRenderId,arrayType);>
+<div class="col-12">
 	<div class="form-group m-form__group row">
 		<label class="col-5 col-form-label" for="exampleInputEmail1">File Attachment</label>
 		<div class="col-4">
 			<div class="custom-file">
-				<input class="custom-file-input" id="customFile" type="file">
-				<label class="custom-file-label selected" for="customFile"></label>
+				<input class="custom-file-input" id='customFile' type="file" (change)="onFileChange($event)">
+				<label class="custom-file-label selected" for="customFile">{{fileName}}</label>
 			</div>
 		</div>
 		

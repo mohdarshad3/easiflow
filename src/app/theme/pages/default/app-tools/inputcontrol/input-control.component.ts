@@ -26,15 +26,16 @@ export class InputControlComponent {
 	@Input() showElementDelete:boolean;
 	@Input() showelEmentStyle:boolean;
 	@Input() showCustomDiv:boolean;
-	inputValue:String = 'Label Here';
+	inputValue:String = '';
 	constructor (public indexcomponent: IndexComponent) {
 	}
     ngOnInit($event) {
-		this.inputValue = 'Label Here';
+		this.inputValue = '';
     }
     ngAfterViewInit() {
 		setTimeout(() => {
 			this.indexcomponent.globalShowParticularElement(this.itemRenderId,this.arrayType);
+			this.showelEmentStyle=true;
 		});
     }
 	//remove item from array
@@ -61,8 +62,10 @@ export class InputControlComponent {
 	}
 	//show custom edit div
 	private showCustomEditDiv(getRenderId,getArrayType){
-		if(getRenderId!='' && getArrayType!='')
+		if(getRenderId!='' && getArrayType!=''){
 			this.indexcomponent.globalshowCustomEditDiv(getRenderId,getArrayType);
+			this.showelEmentStyle=true;
+		}
 	}
 	private onKey(event) {
 		this.inputValue = event.target.value;

@@ -247,7 +247,6 @@
     /* width: 100%; */
     /* height: 100%; */
     text-align: left;
-    text-transform: uppercase;
     transition: opacity 0.1s ease-in;
     /* border: 0; */
     background: rgba(255,255,255,0.8);
@@ -759,9 +758,13 @@ paragraph-control p, anchor-control p {
     display: block;
     margin: 0;
 }
+.gridminheight{
+	min-height: 176px;
+}
 grid-control div {
     width: 100%;
 }
+
 .custom-file-label::-webkit-input-placeholder { color: black; }  / WebKit, Blink, Edge /
 .custom-file-label:-moz-placeholder { color: black; }  / Mozilla Firefox 4 to 18 /
 .custom-file-label::-moz-placeholder { color: black; }  / Mozilla Firefox 19+ /
