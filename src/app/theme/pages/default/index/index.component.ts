@@ -217,6 +217,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     //Global function for showCustom Div
     public globalshowCustomEditDiv(getRenderId, getArrayType) {
         try {
+			this.hideAllDivClass();
             if (getArrayType == "Grid") {
                 let getResponse = this.showGridItem(getRenderId);
                 if (!getResponse)
@@ -232,4 +233,18 @@ export class IndexComponent implements OnInit, AfterViewInit {
         catch (e) {
         }
     }
+	public hideAllDivClass(){
+		this.itemsDropped.forEach(function(item) {
+			item.divClass = "";
+			item.showCustomDiv = false;
+		});
+		this.itemsGridDropped.forEach(function(item, $index) {
+			item.forEach(function(item, $index) {
+				item.forEach(function(item, $index) {
+					item.divClass = "";
+					item.showCustomDiv = false;
+				});
+			});
+		});
+	}
 }

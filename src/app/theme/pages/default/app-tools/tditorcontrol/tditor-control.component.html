@@ -1,4 +1,4 @@
-<div class="col-12" (click)=showCustomEditDiv(itemRenderId,arrayType);>
+<div class="col-12" (click)=showCustomEditDiv(itemRenderId,arrayType); (mouseenter)=showCustomEditDiv(itemRenderId,arrayType);>
 	<p-editor [(ngModel)]="text" [style]="{'height':'100px'}"></p-editor>
 </div>
 <div class="elementOptions" *ngIf="showCustomDiv">

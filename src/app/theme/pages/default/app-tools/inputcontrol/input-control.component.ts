@@ -63,6 +63,7 @@ export class InputControlComponent {
     //show custom edit div
     public showCustomEditDiv(getRenderId, getArrayType) {
         if (getRenderId != '' && getArrayType != '') {
+			this.showElementDelete = false;
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
             this.showelEmentStyle = true;
         }
