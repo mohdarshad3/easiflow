@@ -1,4 +1,4 @@
-<div (click)=showCustomEditDiv(itemRenderId,arrayType); (mouseenter)=showCustomEditDiv(itemRenderId,arrayType);>
+<div (mouseenter)=showCustomEditDiv(itemRenderId,arrayType,$event);>
 	<ng-template #content let-c="close" let-d="dismiss">
 	  <div class="modal-header">
 		<h4 class="modal-title">Modal title</h4>
@@ -15,7 +15,7 @@
 		<button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
 	  </div>
 	</ng-template>
-	<button type="button" class="btn btn-secondary m-btn m-btn--custom" (click)="open(content)">Launch demo modal</button>
+	<button type="button" class="btn btn-secondary m-btn m-btn--custom" (click)="open(content,$event)">Launch demo modal</button>
 </div>
 <div class="elementOptions" *ngIf="showCustomDiv">
 	<span class="dragElement"><i class="fa fa-bars" aria-hidden="true"></i></span>

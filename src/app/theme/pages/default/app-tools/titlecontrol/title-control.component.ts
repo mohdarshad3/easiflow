@@ -43,7 +43,6 @@ export class TitleControlComponent {
     }
     //hide remove dialog item
     public removeDailog() {
-        this.showelEmentStyle = false;
         this.showElementDelete = (!this.showElementDelete) ? true : false;
         event.stopPropagation();
     }
@@ -53,14 +52,16 @@ export class TitleControlComponent {
         event.stopPropagation();
     }
     //show custom edit div
-    public showCustomEditDiv(getRenderId, getArrayType) {
-        if (getRenderId != '' && getArrayType != ''){
-			this.showElementDelete = false;
+    public showCustomEditDiv(getRenderId, getArrayType, $event) {
+        if (getRenderId != '' && getArrayType != '') {
+            this.showElementDelete = false;
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
-		}
+        }
+        event.stopPropagation();
     }
     //toggle function view property
     public toggleEmentStyle() {
+        this.showElementDelete = false;
         event.stopPropagation();
     }
 }

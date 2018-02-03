@@ -3,7 +3,7 @@
 <button class="m-aside-left-close  m-aside-left-close--skin-dark" id="m_aside_left_close_btn" appunwraptag="">
 	<i class="la la-close"></i>
 </button>
-<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark">
+<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark"  [ngClass]="navSideCustom">
 	<!-- BEGIN: Aside Menu -->
 	<div  id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark"  		data-menu-vertical="true"  data-menu-scrollable="true" data-menu-dropdown-timeout="500">
 		<div class="m-menu__section">
@@ -11,8 +11,8 @@
             <i class="m-menu__section-icon flaticon-more-v2"></i>
         </div>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
-			<li *ngFor="let item of itemsControlToDrop" class="m-menu__item">
-				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)" title={{item.name}}>
+			<li *ngFor="let item of itemsControlToDrop; let x = index" class="m-menu__item">
+				<a  routerLink="/index" class="dragItem m-menu__link" mwlDraggable dropData={{item.content}} title={{item.name}}  (dragStart)=dragStart(item); (dragEnd)=dragEnd(item); [ngClass]="item.currentItemSlide" >
 					<i class="{{item.iconClass}}"></i>
 					<span class="m-menu__link-title">
 						<span class="m-menu__link-wrap">
@@ -30,7 +30,7 @@
         </div>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
 			<li *ngFor="let item of itemsStractureToDrop" class="m-menu__item">
-				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)" title={{item.name}}>
+				<a  routerLink="/index" class="dragItem m-menu__link" mwlDraggable dropData={{item.content}} title={{item.name}} (dragStart)=dragStart(item); (dragEnd)=dragEnd(item); [ngClass]="item.currentItemSlide">
 					<i class="{{item.iconClass}}"></i>
 					<span class="m-menu__link-title">
 						<span class="m-menu__link-wrap">
@@ -47,8 +47,8 @@
             <i class="m-menu__section-icon flaticon-more-v2"></i>
         </div>
 		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
-			<li *ngFor="let item of itemsMediaToDrop" class="m-menu__item">
-				<a  routerLink="/index" class="dragItem m-menu__link" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" [ngClass]="{'dragItem-round':item.type===0,'dragItem-square':item.type===1}" (startDrag)="startDrag(item)" title={{item.name}}>
+			<li *ngFor="let item of itemsMediaToDrop" class="m-menu__item" >
+				<a  routerLink="/index" class="dragItem m-menu__link" mwlDraggable dropData={{item.content}} title={{item.name}} (dragStart)=dragStart(item); (dragEnd)=dragEnd(item); [ngClass]="item.currentItemSlide">
 					<i class="{{item.iconClass}}"></i>
 					<span class="m-menu__link-title">
 						<span class="m-menu__link-wrap">

@@ -54,13 +54,14 @@ export class AnchorControlComponent {
     }
     //show custom edit div
     public showCustomEditDiv(getRenderId, getArrayType) {
-        if (getRenderId != '' && getArrayType != ''){
-			this.showElementDelete = false;
+        if (getRenderId != '' && getArrayType != '') {
+            this.showElementDelete = false;
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
-		}
+        }
     }
     //toggle function view property
     public toggleEmentStyle() {
+        this.showElementDelete = false;
         event.stopPropagation();
     }
 

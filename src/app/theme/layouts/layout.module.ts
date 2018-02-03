@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HrefPreventDefaultDirective } from '../../_directives/href-prevent-default.directive';
 import { UnwrapTagDirective } from '../../_directives/unwrap-tag.directive';
-import { DragDropDirectiveModule } from "angular4-drag-drop";
+import { DragAndDropModule } from 'angular-draggable-droppable';
 
 @NgModule({
     declarations: [
@@ -40,7 +40,7 @@ import { DragDropDirectiveModule } from "angular4-drag-drop";
     imports: [
         CommonModule,
         RouterModule,
-        DragDropDirectiveModule,
+        DragAndDropModule.forRoot(),
     ]
 })
 export class LayoutModule {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragDropDirectiveModule } from "angular4-drag-drop";
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index.component';
 import { LayoutModule } from '../../../layouts/layout.module';
@@ -49,7 +49,7 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), LayoutModule, DragDropDirectiveModule, DragulaModule, InlineEditorModule, FormsModule, EditorModule, NgbModule.forRoot()
+        CommonModule, RouterModule.forChild(routes), LayoutModule, DragulaModule, DragAndDropModule.forRoot(), InlineEditorModule, FormsModule, EditorModule, NgbModule.forRoot()
     ], exports: [
         RouterModule
     ], declarations: [

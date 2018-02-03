@@ -1,4 +1,4 @@
-<div (click)=showCustomEditDiv(itemRenderId,arrayType); (mouseenter)=showCustomEditDiv(itemRenderId,arrayType);>
+<div (mouseenter)=showCustomEditDiv(itemRenderId,arrayType,$event);>
 	<h1 class="titleClass">Click here to edit title</h1>
 </div>
 <div class="elementOptions" *ngIf="showCustomDiv">

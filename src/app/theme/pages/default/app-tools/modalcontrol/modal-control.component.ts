@@ -55,17 +55,18 @@ export class ModalControlComponent {
         event.stopPropagation();
     }
     //show custom edit div
-    public showCustomEditDiv(getRenderId, getArrayType) {
-       if (getRenderId != '' && getArrayType != ''){
-			this.showElementDelete = false;
+    public showCustomEditDiv(getRenderId, getArrayType, $event) {
+        if (getRenderId != '' && getArrayType != '') {
+            this.showElementDelete = false;
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
-		}
+        }
     }
     //toggle function view property
     public toggleEmentStyle() {
+        this.showElementDelete = false;
         event.stopPropagation();
     }
-    open(content) {
+    public open(content, $event) {
         this.modalService.open(content).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
         }, (reason) => {

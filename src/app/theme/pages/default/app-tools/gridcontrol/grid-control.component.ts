@@ -32,6 +32,7 @@ export class GridControlComponent {
     arrLength: number = 0;
     selected: any;
     closeResult: String;
+    dropOverActive = false
     @ViewChild('content') private content;
     public createGridProperty: Array<Object> = [
         {
@@ -58,6 +59,7 @@ export class GridControlComponent {
     constructor(private modalService: NgbModal, public indexcomponent: IndexComponent, private dragula: DragulaService) {
     }
     ngOnInit() {
+        debugger;
         setTimeout(() => {
             this.arrLength = this.indexcomponent.createNewGrid.length;
             this.getGridCol(0, this.arrLength, '');
@@ -92,6 +94,7 @@ export class GridControlComponent {
     }
     ngAfterViewInit() {
         setTimeout(() => {
+            debugger;
             this.indexcomponent.globalShowParticularElement(this.itemRenderId, this.arrayType);
         });
     }
@@ -129,30 +132,43 @@ export class GridControlComponent {
     }
     //show custom edit div
     public showCustomEditDiv(getRenderId, getArrayType) {
-        if (getRenderId != '' && getArrayType != '')
+        if (getRenderId != '' && getArrayType != '') {
+            this.showElementDelete = false;
             this.indexcomponent.globalshowCustomEditDiv(getRenderId, getArrayType);
+        }
     }
-    public addItemToGrid(griditem, $gridArryLength, $gridindex) {
+    public addItemToGrid(griditem, $gridArryLength, $gridindex, getRenderId, getArrayType) {
+        debugger;
+        if (this.indexcomponent.isRenderEleId > 0) {
+            let res = this.indexcomponent.deleteMainItem(this.indexcomponent.isRenderEleId);
+            if (res)
+                this.indexcomponent.isRenderEleId = 0;
+        }
         if (this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].length == 1) {
             this.indexcomponent.createNewGrid[$gridArryLength].forEach(function(item, $index) {
                 if ($index == $gridindex)
                     item.showDemoGridText = false;
             });
         }
-        if (griditem.renderid == undefined) {
-            griditem.showBasicControl = (griditem.content != 'dividercontrol' && griditem.content != 'gridcontrol' && griditem.content != 'sectioncontrol' && griditem.content != 'spacercontrol' && griditem.content != 'fileattachmentcontrol' && griditem.content != 'embedvidcontrol') ? true : false;
-            griditem.arrayType = "Grid";
-            griditem.divClass = (griditem.content == 'sectioncontrol' || griditem.content == 'gridcontrol') ? "element-box-contents-for-stracture" : (griditem.content == 'dividercontrol') ? "element-box-contents-for-divider" : (griditem.content == 'spacercontrol') ? "element-box-contents-for-spacer" : "element-box-contents";
-            griditem.showElementDelete = griditem.showelEmentStyle = false;
-            griditem.showCustomDiv = true;
-            griditem.gridArryLength = $gridArryLength;
-            griditem.gridindex = $gridindex;
-            griditem.itemRenderId = this.indexcomponent.autoRenderGrid.length + 1;
-
-            this.indexcomponent.autoRenderGrid.push(griditem.itemRenderId);
-            this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].push(griditem);
+        if (griditem != undefined) {
+            griditem = this.indexcomponent.getMyRenderValue(griditem);
+            if (griditem != undefined && griditem != "") {
+                griditem.showBasicControl = (griditem.content != 'dividercontrol' && griditem.content != 'gridcontrol' && griditem.content != 'sectioncontrol' && griditem.content != 'spacercontrol' && griditem.content != 'fileattachmentcontrol' && griditem.content != 'embedvidcontrol') ? true : false;
+                griditem.arrayType = "Grid";
+                griditem.divClass = (griditem.content == 'sectioncontrol' || griditem.content == 'gridcontrol') ? "element-box-contents-for-stracture" : (griditem.content == 'dividercontrol') ? "element-box-contents-for-divider" : (griditem.content == 'spacercontrol') ? "element-box-contents-for-spacer" : "element-box-contents";
+                griditem.showElementDelete = griditem.showelEmentStyle = false;
+                griditem.showCustomDiv = true;
+                griditem.gridArryLength = $gridArryLength;
+                griditem.gridindex = $gridindex;
+                griditem.itemRenderId = this.indexcomponent.autoRenderGrid.length + 1;
+                this.indexcomponent.autoRenderGrid.push(griditem.itemRenderId);
+                this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].push(griditem);
+                this.dropOverActive = false
+                //this.indexcomponent.isRenderEle
+            }
         }
-        this.indexcomponent.isRenderEle = true;
+        //this.indexcomponent.isRenderEle = true;
+
     }
     public getGridCol(colEvent, arrGridLength, gridValue) {
         this.arrLength = arrGridLength;

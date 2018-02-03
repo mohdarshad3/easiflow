@@ -21,11 +21,12 @@
 		</div>
 	</div>
 </div>
-<div class="m-content" (click)=hideCustomEditDiv($event); dropDirective (dropEvent)=addDropItem($event);false  class="droppable" [dropHighlight]="'highlight'">
+<div class="m-content"  (click)=hideCustomEditDiv(); class="droppable">
 	<div class="draggable-directive" >
-		<div class="m-portlet m-portlet--mobile m-editable-area flex-items">
-			<form class="m-form m-form--fit m-form--label-align-right" >
-				<div class="m-portlet__body">
+		<div class="m-portlet m-portlet--mobile m-editable-area flex-items" [class.dropOverActive]="dropOverActive"
+			mwlDroppable (dragEnter)="dropOverActive = true" (dragLeave)="dropOverActive = false" (drop)=addDropItem($event)>
+			<form class="m-form m-form--fit m-form--label-align-right" (mouseleave)=hideAllDivClass();>
+				<div class="m-portlet__body" >
 					<!--begin: Datatable -->
 						<div class="drag-here-component droppable" *ngIf="showSelected">
 							<i class="m-menu__link-icon la la-object-ungroup"></i>
@@ -39,6 +40,7 @@
 											<!-- Basic control-->
 											<div class="toggleElelement" [ngClass]="item.divClass" *ngIf="item.showBasicControl">
 												<title-control *ngIf="item.content == 'titlecontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></title-control>
+												
 												<label-control *ngIf="item.content == 'labelcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></label-control>
 												<input-control *ngIf="item.content == 'inputcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></input-control>
 												<checkbox-control *ngIf="item.content == 'checkboxcontrol'" [itemRenderId]=item.itemRenderId [showElementDelete]=item.showElementDelete [showCustomDiv]=item.showCustomDiv [arrayType]=item.arrayType></checkbox-control>

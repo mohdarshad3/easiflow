@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Helpers } from '../../../helpers';
 
-
 declare let mLayout: any;
 @Component({
     selector: "app-aside-nav",
@@ -10,6 +9,7 @@ declare let mLayout: any;
 })
 export class AsideNavComponent implements OnInit, AfterViewInit {
     dropItemType: any;
+    navSideCustom: String = '';
     public itemsControlToDrop: Array<Object> = [
         {
             name: 'Title',
@@ -165,5 +165,12 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
     }
     public releaseDrop(event) {
 
+    }
+    public dragEnd(event) {
+        this.navSideCustom=event.currentItemSlide = '';
+    }
+    public dragStart(event) {
+		event.currentItemSlide="currentitemslide";
+        this.navSideCustom = 'currentDraggable';
     }
 }

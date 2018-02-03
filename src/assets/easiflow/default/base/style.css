@@ -764,7 +764,13 @@ paragraph-control p, anchor-control p {
 grid-control div {
     width: 100%;
 }
-
+.dropOverActive {
+	border: 1px dashed rgba(1,194,253,0.6);
+}
+.currentDraggable .mCustomScrollBox, .currentDraggable .mCSB_container {
+	overflow: visible;
+}
+.currentitemslide{z-index:999999999;}
 .custom-file-label::-webkit-input-placeholder { color: black; }  / WebKit, Blink, Edge /
 .custom-file-label:-moz-placeholder { color: black; }  / Mozilla Firefox 4 to 18 /
 .custom-file-label::-moz-placeholder { color: black; }  / Mozilla Firefox 19+ /
