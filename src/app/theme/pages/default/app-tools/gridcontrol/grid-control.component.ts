@@ -59,7 +59,6 @@ export class GridControlComponent {
     constructor(private modalService: NgbModal, public indexcomponent: IndexComponent, private dragula: DragulaService) {
     }
     ngOnInit() {
-        debugger;
         setTimeout(() => {
             this.arrLength = this.indexcomponent.createNewGrid.length;
             this.getGridCol(0, this.arrLength, '');
@@ -94,7 +93,6 @@ export class GridControlComponent {
     }
     ngAfterViewInit() {
         setTimeout(() => {
-            debugger;
             this.indexcomponent.globalShowParticularElement(this.itemRenderId, this.arrayType);
         });
     }
@@ -138,7 +136,6 @@ export class GridControlComponent {
         }
     }
     public addItemToGrid(griditem, $gridArryLength, $gridindex, getRenderId, getArrayType) {
-        debugger;
         if (this.indexcomponent.isRenderEleId > 0) {
             let res = this.indexcomponent.deleteMainItem(this.indexcomponent.isRenderEleId);
             if (res)

@@ -22,7 +22,7 @@
 	</div>
 </div>
 <div class="m-content"  (click)=hideCustomEditDiv(); class="droppable">
-	<div class="draggable-directive" >
+	<div class="draggable-directive">
 		<div class="m-portlet m-portlet--mobile m-editable-area flex-items" [class.dropOverActive]="dropOverActive"
 			mwlDroppable (dragEnter)="dropOverActive = true" (dragLeave)="dropOverActive = false" (drop)=addDropItem($event)>
 			<form class="m-form m-form--fit m-form--label-align-right" (mouseleave)=hideAllDivClass();>

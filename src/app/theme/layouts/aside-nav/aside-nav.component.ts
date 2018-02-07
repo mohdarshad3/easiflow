@@ -167,10 +167,10 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
 
     }
     public dragEnd(event) {
-        this.navSideCustom=event.currentItemSlide = '';
+        this.navSideCustom = event.currentItemSlide = '';
     }
     public dragStart(event) {
-		event.currentItemSlide="currentitemslide";
+        event.currentItemSlide = "currentitemslide";
         this.navSideCustom = 'currentDraggable';
     }
 }

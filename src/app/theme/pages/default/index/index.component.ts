@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild } from '
 import { Helpers } from '../../../../helpers';
 import { ScriptLoaderService } from '../../../../_services/script-loader.service';
 import { trigger, style, animate, transition } from '@angular/animations';
-
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 @Component({
     selector: "app-index",
     templateUrl: "./index.component.html",
@@ -171,8 +171,13 @@ export class IndexComponent implements OnInit, AfterViewInit {
             itemclass: 'item-divider'
         }
     ];
-    constructor(private _script: ScriptLoaderService, ) {
-
+    constructor(private _script: ScriptLoaderService,private dragula: DragulaService ) {
+		dragula.setOptions('main-items', {
+			removeOnSpill: false,
+			accepts: (el: Element, target: Element, source: Element, sibling: Element): boolean => {
+				return !el.contains(target);
+			}
+		});
     }
     ngOnInit() {
         this.showSelected = (this.itemsDropped.length) > 0 ? false : true;
