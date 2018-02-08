@@ -171,13 +171,13 @@ export class IndexComponent implements OnInit, AfterViewInit {
             itemclass: 'item-divider'
         }
     ];
-    constructor(private _script: ScriptLoaderService,private dragula: DragulaService ) {
-		dragula.setOptions('main-items', {
-			removeOnSpill: false,
-			accepts: (el: Element, target: Element, source: Element, sibling: Element): boolean => {
-				return !el.contains(target);
-			}
-		});
+    constructor(private _script: ScriptLoaderService, private dragula: DragulaService) {
+        dragula.setOptions('main-items', {
+            removeOnSpill: false,
+            accepts: (el: Element, target: Element, source: Element, sibling: Element): boolean => {
+                return !el.contains(target);
+            }
+        });
     }
     ngOnInit() {
         this.showSelected = (this.itemsDropped.length) > 0 ? false : true;

@@ -375,6 +375,12 @@ ul.inputEditNav>li.m-nav__section--first > span {
 	z-index:1;
 	    flex-wrap: wrap;
 }
+.confirmElementDelete.UpDelete{
+	margin-top:2px;width:100% !important;height:91px;background:transparent;box-shadow: none !important;
+}
+.confirmElementDelete.secondDeldiv{
+	margin-top:16px;
+}
 .confirmElementDelete:before {
     content: "";
     border-left: 5px solid transparent;
@@ -383,6 +389,9 @@ ul.inputEditNav>li.m-nav__section--first > span {
     position: absolute;
     top: -5px;
     margin-left: 15px;
+}
+.confirmElementDelete.UpDelete:before{
+	display:none;
 }
 .confirmElementDelete>button {
     margin: 10px 6px 4px;
