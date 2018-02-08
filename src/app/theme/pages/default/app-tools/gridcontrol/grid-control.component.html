@@ -1,5 +1,5 @@
 <div class="{{grid.classname}} text-left gridminheight droppable" [ngStyle]="{'transition':'show,flex'}" [class.dropOverActive]="dropOverActive" mwlDroppable (dragEnter)="dropOverActive = true"
- (dragLeave)="dropOverActive = false" (drop)=addItemToGrid($event,grid.arrGridLength,gridIndex,itemRenderId,arrayType); *ngFor="let grid of indexcomponent.createNewGrid[arrLength];let gridIndex=index" (mouseenter)=showCustomEditDiv(itemRenderId,arrayType,$event);>
+ (dragLeave)="dropOverActive = false" (drop)=addItemToGrid($event,grid.arrGridLength,gridIndex,itemRenderId,arrayType); *ngFor="let grid of indexcomponent.createNewGrid[arrLength];let gridIndex=index" (mouseenter)=showCustomEditDiv(itemRenderId,arrayType);>
 	<div class="drag-here-component droppable" *ngIf="grid.showDemoGridText">
 		<i class="m-menu__link-icon la la-object-ungroup"></i>
 		<h4>Drag Your Components Here</h4>

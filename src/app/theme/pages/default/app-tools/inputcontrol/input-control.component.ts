@@ -35,8 +35,9 @@ export class InputControlComponent {
     ngAfterViewInit() {
         setTimeout(() => {
             this.indexcomponent.globalShowParticularElement(this.itemRenderId, this.arrayType);
-            this.showelEmentStyle = true;
+			this.showelEmentStyle = true;
         });
+		
     }
     //remove item from array
     public removeItem(myitemRenderId, myArrayType) {

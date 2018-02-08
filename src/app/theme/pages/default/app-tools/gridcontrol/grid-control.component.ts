@@ -161,11 +161,8 @@ export class GridControlComponent {
                 this.indexcomponent.autoRenderGrid.push(griditem.itemRenderId);
                 this.indexcomponent.itemsGridDropped[$gridArryLength][$gridindex].push(griditem);
                 this.dropOverActive = false
-                //this.indexcomponent.isRenderEle
             }
         }
-        //this.indexcomponent.isRenderEle = true;
-
     }
     public getGridCol(colEvent, arrGridLength, gridValue) {
         this.arrLength = arrGridLength;
